@@ -13,7 +13,7 @@ namespace Cinema.Controllers
             _db = db;
         }
 
-        public IActionResult Index()
+        public IActionResult CinemaBranch()
         {
             IEnumerable<CinemaBranch> CinemaBranchList = _db.CinemaBranch;
             return View(CinemaBranchList);

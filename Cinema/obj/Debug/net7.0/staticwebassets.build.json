@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "d27FxcxpGJnQjMjEMw4bvjlhL634FU2vs5Yspsk4J64=",
+  "Hash": "fVDZ6jlQf6KZAKsjqYpJzH4tO2BL2TuviD2eaRr5HIc=",
   "Source": "Cinema",
   "BasePath": "_content/Cinema",
   "Mode": "Default",
@@ -100,6 +100,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\MVC\\TEST123\\BS1\\Cinema\\Cinema\\wwwroot\\js\\ModalPopup.js",
+      "SourceId": "Cinema",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\MVC\\TEST123\\BS1\\Cinema\\Cinema\\wwwroot\\",
+      "BasePath": "_content/Cinema",
+      "RelativePath": "js/ModalPopup.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\ModalPopup.js"
+    },
+    {
+      "Identity": "C:\\MVC\\TEST123\\BS1\\Cinema\\Cinema\\wwwroot\\js\\Movie\\MovieManager.js",
+      "SourceId": "Cinema",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\MVC\\TEST123\\BS1\\Cinema\\Cinema\\wwwroot\\",
+      "BasePath": "_content/Cinema",
+      "RelativePath": "js/Movie/MovieManager.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\Movie\\MovieManager.js"
     },
     {
       "Identity": "C:\\MVC\\TEST123\\BS1\\Cinema\\Cinema\\wwwroot\\js\\site.js",

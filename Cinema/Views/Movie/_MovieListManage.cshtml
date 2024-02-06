@@ -1,0 +1,38 @@
+﻿@model IEnumerable<Movie>
+
+<table class="table table-bordered table-striped" style="width:100%">
+    <thead>
+        <tr>
+            <th>Movie Name</th>
+            <th>Description</th>
+            <th>Genre</th>
+            <th>Cover Photo</th> <!-- New column for Cover Photo -->
+            <th style="text-align: center;">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var obj in Model)
+        {
+            <tr>
+                <td width="25%">@obj.Name</td>
+                <td width="20%">@obj.Description</td>
+                <td width="15%">@obj.Genre</td>
+                <td width="20%">
+                    @if (obj.CoverPhoto != null && obj.CoverPhoto.Length > 0)
+                    {
+                        var imageBase64 = Convert.ToBase64String(obj.CoverPhoto);
+                        <img src="data:image;base64,@imageBase64" alt="Cover Photo" class="img-thumbnail" />
+                    }
+                </td>
+                <td width="20%" style="text-align: center;">
+                    <button type="button" class="btn btn-outline-info" data-toggle="ajax-modal" data-target="#addMovie" data-url="@Url.Action("Edit")" data-id="@obj.Id">Edit</button>&nbsp;
+                    <button type="button" class="btn btn-outline-warning delete-movie-btn" data-id="@obj.Id" data-url="@Url.Action("Delete")">
+                        Delete
+                    </button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+

@@ -16,8 +16,8 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\MVC\TEST123\BS1\Cinema\Cinema
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/MVC/TEST123/BS1/Cinema/Cinema/Views/CinemaBranch/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2luZW1hQnJhbmNoXEluZGV4LmNzaHRtbA==
+[C:/MVC/TEST123/BS1/Cinema/Cinema/Views/CinemaBranch/CinemaBranch.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2luZW1hQnJhbmNoXENpbmVtYUJyYW5jaC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/MVC/TEST123/BS1/Cinema/Cinema/Views/Home/Index.cshtml]
@@ -28,8 +28,24 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/MVC/TEST123/BS1/Cinema/Cinema/Views/Movie/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW92aWVcSW5kZXguY3NodG1s
+[C:/MVC/TEST123/BS1/Cinema/Cinema/Views/Movie/BookMovie.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW92aWVcQm9va01vdmllLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/MVC/TEST123/BS1/Cinema/Cinema/Views/Movie/ManageMovie.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW92aWVcTWFuYWdlTW92aWUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/MVC/TEST123/BS1/Cinema/Cinema/Views/Movie/Movie.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW92aWVcTW92aWUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/MVC/TEST123/BS1/Cinema/Cinema/Views/Movie/_MovieList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW92aWVcX01vdmllTGlzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/MVC/TEST123/BS1/Cinema/Cinema/Views/Movie/_MovieListManage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW92aWVcX01vdmllTGlzdE1hbmFnZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/MVC/TEST123/BS1/Cinema/Cinema/Views/Movie/_MovieModelPartial.cshtml]
@@ -48,8 +64,8 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlckFjY291bnRzXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/MVC/TEST123/BS1/Cinema/Cinema/Views/UserAccounts/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlckFjY291bnRzXEluZGV4LmNzaHRtbA==
+[C:/MVC/TEST123/BS1/Cinema/Cinema/Views/UserAccounts/UserAccounts.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlckFjY291bnRzXFVzZXJBY2NvdW50cy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/MVC/TEST123/BS1/Cinema/Cinema/Views/_ViewImports.cshtml]

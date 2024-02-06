@@ -1,25 +1,31 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
-
-// Write your JavaScript code.
-
+﻿
 
 
 $(function () {
     var PlaceHolderElement = $('#PlaceHolderHere');
 
-    $('button[data-toggle="ajax-modal"]').click(function (event) {
-        //Retrieve id
-        var button = $(this);
-        var id = button.data('id');
+    // Close
+    $(document).on('click', '.close-modal-btn', function () {
+        $(this).closest('.modal').modal('hide');
+    });
 
-        var url = $(this).data('url');
-        $.get(url, { id: id }).done(function (data) {
-            PlaceHolderElement.html(data);
-            PlaceHolderElement.find('.modal').modal('show');
-        })
-    })
+    // Edit / Save
+    $(document).ready(function () {
+        // Event delegation for edit/save buttons
+        $(document).on('click', 'button[data-toggle="ajax-modal"]', function () {
+            //Retrieve id
+            var button = $(this);
+            var id = button.data('id');
 
+            var url = $(this).data('url');
+            $.get(url, { id: id }).done(function (data) {
+                $('#PlaceHolderHere').html(data);
+                $('#PlaceHolderHere').find('.modal').modal('show');
+            });
+        });
+    });
+
+    // OnSave
     PlaceHolderElement.on('click', '[data-save="modal"]', function (event) {
         var form = $(this).parents('.modal').find('form')[0];
         var ActionUrl = form.action;
@@ -36,11 +42,10 @@ $(function () {
                 console.log(data);
 
                 if (data.success) {
-                    // Handle success, you can access additional data like movieId
                     console.log("Movie created successfully. Movie ID: " + data.movieId);
                     PlaceHolderElement.find('.modal').modal('hide');
+                    updateMovieList();
                 } else {
-                    // Handle errors
                     console.log("Error creating movie:", data.errors);
                 }
             }
@@ -48,21 +53,25 @@ $(function () {
     });
 
 
-    //PlaceHolderElement.on('click', '[data-save="modal"]', function (event) {
-    //    var form = $(this).parents('.modal').find('form');
-    //    var ActionUrl = form.attr('action');
-    //    var ControllerUrl = form.attr('id');
-    //    var sendData = form.serialize();
-    //    var ApiURL = ControllerUrl + '/' + ActionUrl;
-
-    //    $.post(ApiURL, sendData)
-    //        .done(function (data) {
-    //            if (data.success) {
-    //                PlaceHolderElement.find('.modal').modal('hide');
-    //            } 
-    //        })
-    //});
-
-
 })
+
+    // Delete
+    $(document).ready(function () {
+        // Event delegation for delete buttons
+        $(document).on('click', '.delete-movie-btn', function () {
+            var id = $(this).data('id');
+            var url = $(this).data('url');
+            var rowToDelete = $(this).closest('tr');
+
+            if (confirm('Are you sure you want to delete this movie?')) {
+                $.post(url, { id: id })
+                    .done(function (data) {
+                        rowToDelete.remove();
+                    })
+                    .fail(function (xhr, status, error) {
+                        // Handle failure
+                    });
+            }
+        });
+    });
 

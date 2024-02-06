@@ -18,10 +18,9 @@ namespace Cinema.Controllers
 
         public IActionResult Index()
         {
-            //IEnumerable<Movie> objMovieList = _db.Movie.Where(x=>x.Description=="Marvel");
             IEnumerable<Movie> objMovieList = _db.Movie
-                                     .Where(x => x.Description == "Marvel")
-                                     .Take(3)
+                                     //.Where(x => x.Genre == "Thriller")
+                                     .Take(9)
                                      .ToList();
             return View(objMovieList);
         }

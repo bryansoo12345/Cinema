@@ -17,6 +17,14 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\MVC\\TEST123\\BS1\\Cinema\\Cinema\\wwwroot\\js\\ModalPopup.js",
+      "PackagePath": "staticwebassets\\js\\ModalPopup.js"
+    },
+    {
+      "Id": "C:\\MVC\\TEST123\\BS1\\Cinema\\Cinema\\wwwroot\\js\\Movie\\MovieManager.js",
+      "PackagePath": "staticwebassets\\js\\Movie\\MovieManager.js"
+    },
+    {
       "Id": "C:\\MVC\\TEST123\\BS1\\Cinema\\Cinema\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },

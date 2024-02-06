@@ -13,7 +13,7 @@ namespace Cinema.Controllers
             _db = db;
         }
 
-        public IActionResult Index()
+        public IActionResult UserAccounts()
         {   
             IEnumerable<UserAccounts> UserAccountsList = _db.UserAccounts.ToList();
             return View(UserAccountsList);
@@ -33,7 +33,7 @@ namespace Cinema.Controllers
             {
                 _db.UserAccounts.Add(userAccounts);
                 _db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("UserAccounts");
             }
             return View();
         }
