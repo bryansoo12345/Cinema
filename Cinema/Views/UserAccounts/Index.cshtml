@@ -1,0 +1,49 @@
+﻿@model IEnumerable<UserAccounts>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container p-3">
+
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Manage User Accounts</h2>
+        </div>
+        <div class="col-6 text-end">
+            @*<button type="button" class="btn btn-primary" asp-controller="UserAccounts" asp-action="Create">Add New User</button>*@
+            <a asp-controller="UserAccounts" asp-action="Create" class="btn btn-primary">Add New User</a>
+            @*            <a asp-controller="Movie" asp-action="Create" class="btn btn-primary">
+            Add New Movie
+            </a>*@
+        </div>
+    </div>
+
+    <br />
+    <div id="PlaceHolderHere"></div>
+    @*<button type="button" class="btn btn-primary" data-toggle="ajax-modal" data-target="#addMovie" data-url="@Url.Action("Create")">Create</button>*@
+    <table class="table table-bordered table-striped" style="width:100%">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.UserName)</th>
+                <th>@Html.DisplayNameFor(model => model.Name)</th>
+                <th>@Html.DisplayNameFor(model => model.Email)</th>
+                <th>@Html.DisplayNameFor(model => model.AccountType)</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var obj in Model)
+            {
+                <tr>
+                    <td width="50%">@obj.UserName</td>
+                    <td width="25%">@obj.Name</td>
+                    <td width="25%">@obj.Email</td>
+                    <td width="25%">@obj.AccountType</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+
+
+</div>
+

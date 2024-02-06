@@ -1,0 +1,58 @@
+﻿@model Movie
+    
+    <div class="modal fade" id="addMovie">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addMoveLabel">Edit Item</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                <form action="Movie/Create" id="Movie" enctype="multipart/form-data" method="post">
+                        <div class="form-group">
+                            <label asp-for="Name"></label>
+                            <input asp-for="Name" class="form-control"/>
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Description"></label>
+                            <input asp-for="Description" class="form-control" />
+                            <span asp-validation-for="Description" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                        <div class="mb-3">
+                            <label asp-for="IFormPhoto" class="form-label">Cover Photo</label>
+                            <input asp-for="IFormPhoto" class="form-control">
+                            <span asp-validation-for="IFormPhoto" class="text-danger" accept=".png, .jpg, .jpeg"></span>
+                        </div>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Genre"></label>
+                            <select asp-for="Genre" class="form-control">
+                                @foreach (var genre in Enum.GetValues(typeof(Cinema.Models.Movie.GenreType)))
+                                {
+                                    <option value="@genre">@genre</option>
+                                }
+                            </select>
+                            <span asp-validation-for="Genre" class="text-danger"></span>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" data-save="modal">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script>
+    $(function () {
+        // Assuming the close button has the class 'close' and data-dismiss='modal'
+        $('.modal').on('click', '.close', function () {
+            $(this).closest('.modal').modal('hide');
+        });
+    });
+</script>
