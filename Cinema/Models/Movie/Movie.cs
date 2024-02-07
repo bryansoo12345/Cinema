@@ -18,8 +18,7 @@ namespace Cinema.Models
         [Display(Name = "Choose the cover for the movie")]
         [NotMapped]
         public IFormFile? IFormPhoto { get; set; }
-
-        public DateTime CreatedDateTime = DateTime.Now;
+        public DateTime CreatedDateTime { get; set; }
 
         public enum GenreType
         {

@@ -1,4 +1,5 @@
-﻿@model Movie
+﻿@using Cinema.Models
+@model Movie
 @* Retrieve the method name from ViewBag *@
 @{
     string methodName = ViewBag.MethodName as string;
@@ -38,7 +39,7 @@
                         <div class="form-group">
                             <label asp-for="Genre"></label>
                             <select asp-for="Genre" class="form-control">
-                                @foreach (var genre in Enum.GetValues(typeof(Cinema.Models.Movie.GenreType)))
+                                @foreach (var genre in Enum.GetValues(typeof(Movie.GenreType)))
                                 {
                                     <option value="@genre">@genre</option>
                                 }

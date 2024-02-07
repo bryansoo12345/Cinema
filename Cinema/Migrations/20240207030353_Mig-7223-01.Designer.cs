@@ -4,6 +4,7 @@ using Cinema.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Cinema.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240207030353_Mig-7223-01")]
+    partial class Mig722301
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -49,10 +52,10 @@ namespace Cinema.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("CinemaBranch", (string)null);
+                    b.ToTable("CinemaBranch");
                 });
 
-            modelBuilder.Entity("Cinema.Models.Movie", b =>
+            modelBuilder.Entity("Cinema.Models.Movie.Movie", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -80,10 +83,10 @@ namespace Cinema.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Movie", (string)null);
+                    b.ToTable("Movie");
                 });
 
-            modelBuilder.Entity("Cinema.Models.MovieHall", b =>
+            modelBuilder.Entity("Cinema.Models.Movie.MovieHall", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -110,20 +113,16 @@ namespace Cinema.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("MovieHall", (string)null);
+                    b.ToTable("MovieHall");
                 });
 
-            modelBuilder.Entity("Cinema.Models.MovieHallSeats", b =>
+            modelBuilder.Entity("Cinema.Models.Movie.MovieHallSeats", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("HallCode")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsOccupied")
                         .HasColumnType("bit");
@@ -136,7 +135,7 @@ namespace Cinema.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("MovieHallSeats", (string)null);
+                    b.ToTable("MovieHallSeats");
                 });
 
             modelBuilder.Entity("Cinema.Models.UserAccounts", b =>
@@ -167,7 +166,7 @@ namespace Cinema.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("UserAccounts", (string)null);
+                    b.ToTable("UserAccounts");
                 });
 #pragma warning restore 612, 618
         }

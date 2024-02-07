@@ -35,15 +35,15 @@
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="UserAccounts" asp-action="UserAccounts">Manage User</a>
                         </li>
-                        <li class="nav-item">
+@*                        <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="CinemaBranch" asp-action="CinemaBranch">Cinema Branch</a>
-                        </li>
+                        </li>*@
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Manage Cinemas</a>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="#">Action</a>
-                                <a class="dropdown-item" href="#">Another action</a>
-                                <a class="dropdown-item" href="#">Something else here</a>
+                                <a class="nav-link" asp-area="" asp-controller="CinemaBranch" asp-action="CinemaBranch">Cinema Branch</a>
+                                <a class="nav-link" asp-area="" asp-controller="CinemaBranch" asp-action="CinemaBranch">Manage Branch Hall</a>
+                                @*<a class="nav-link" asp-area="" asp-controller="CinemaBranch" asp-action="CinemaBranch">Manage Branch</a>*@
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#">Separated link</a>
                             </div>

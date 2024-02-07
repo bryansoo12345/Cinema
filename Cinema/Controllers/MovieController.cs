@@ -1,5 +1,6 @@
 ﻿using Cinema.Data;
 using Cinema.Models;
+using Cinema.Models;
 using Microsoft.AspNetCore.Mvc;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
@@ -14,20 +15,22 @@ namespace Cinema.Controllers
             _db = db;
         }
 
+        #region Customer UI
+
         public IActionResult Movie()
         {
             IEnumerable<Movie> objMovieList = _db.Movie.ToList();
             return View(objMovieList);
         }
 
+        #endregion
+
+        #region Manage Movie
+
         public IActionResult ManageMovie()
         {
             IEnumerable<Movie> objMovieList = _db.Movie.ToList();
             return View(objMovieList);
-        }
-        public IActionResult BookMovie()
-        {
-            return View();
         }
 
         [HttpGet]
@@ -144,5 +147,22 @@ namespace Cinema.Controllers
             return PartialView("_MovieListManage", movies);
         }
 
+        #endregion
+
+
+        #region BookMovie
+
+        public IActionResult BookMovie()
+        {
+            MovieHall? movieHall = _db.MovieHall.FirstOrDefault();
+
+            movieHall.ShowingMovies = _db.Movie.Where(x => x.Genre == "Thriller").Take(5).ToList();
+            movieHall.Seats = MovieHall.PopulateSeats(movieHall.NumberOfRows, movieHall.NumberOfSeats).OrderBy(x=>x.SeatCode);
+            return View(movieHall);
+        }
+
+        #endregion
+
     }
 }
+    

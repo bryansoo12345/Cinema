@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "fVDZ6jlQf6KZAKsjqYpJzH4tO2BL2TuviD2eaRr5HIc=",
+  "Hash": "DuX1KGRcs2iB/48FQNKKf16FRKZT0+fI6kJGyPglm6w=",
   "Source": "Cinema",
   "BasePath": "_content/Cinema",
   "Mode": "Default",
@@ -49,6 +49,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\MVC\\TEST123\\BS1\\Cinema\\Cinema\\obj\\Debug\\net7.0\\scopedcss\\projectbundle\\Cinema.bundle.scp.css"
+    },
+    {
+      "Identity": "C:\\MVC\\TEST123\\BS1\\Cinema\\Cinema\\wwwroot\\css\\BookMovie\\bookmovie.css",
+      "SourceId": "Cinema",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\MVC\\TEST123\\BS1\\Cinema\\Cinema\\wwwroot\\",
+      "BasePath": "_content/Cinema",
+      "RelativePath": "css/BookMovie/bookmovie.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\BookMovie\\bookmovie.css"
     },
     {
       "Identity": "C:\\MVC\\TEST123\\BS1\\Cinema\\Cinema\\wwwroot\\css\\bootswatch.css",
@@ -117,6 +134,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\ModalPopup.js"
+    },
+    {
+      "Identity": "C:\\MVC\\TEST123\\BS1\\Cinema\\Cinema\\wwwroot\\js\\Movie\\BookMovie.js",
+      "SourceId": "Cinema",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\MVC\\TEST123\\BS1\\Cinema\\Cinema\\wwwroot\\",
+      "BasePath": "_content/Cinema",
+      "RelativePath": "js/Movie/BookMovie.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\Movie\\BookMovie.js"
     },
     {
       "Identity": "C:\\MVC\\TEST123\\BS1\\Cinema\\Cinema\\wwwroot\\js\\Movie\\MovieManager.js",

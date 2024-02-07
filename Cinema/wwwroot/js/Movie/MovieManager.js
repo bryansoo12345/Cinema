@@ -7,3 +7,4 @@
             console.log("Failed to update movie list.");
         });
 }
+
