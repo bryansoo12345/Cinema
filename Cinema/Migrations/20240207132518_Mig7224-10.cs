@@ -5,25 +5,24 @@
 namespace Cinema.Migrations
 {
     /// <inheritdoc />
-    public partial class Mig5224 : Migration
+    public partial class Mig722410 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "UserAccounts",
+                name: "MovieShowSeats",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    UserName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    ShowCode = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    SeatCode = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    IsBooked = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_UserAccounts", x => x.Id);
+                    table.PrimaryKey("PK_MovieShowSeats", x => x.Id);
                 });
         }
 
@@ -31,7 +30,7 @@ namespace Cinema.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "UserAccounts");
+                name: "MovieShowSeats");
         }
     }
 }

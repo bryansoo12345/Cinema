@@ -15,10 +15,15 @@ namespace Cinema.Data
 
         public DbSet<CinemaBranch> CinemaBranch { get; set; }
 
-        public DbSet<UserAccounts> UserAccounts { get; set; }
+        public DbSet<Account> Account { get; set; }
 
         public DbSet<MovieHall> MovieHall { get; set; }
 
         public DbSet<MovieHallSeats> MovieHallSeats { get; set; }
+
+        public DbSet<MovieShow> MovieShow { get; set; }
+
+        public DbSet<MovieShowSeats> MovieShowSeats { get; set; }
+
     }
 }

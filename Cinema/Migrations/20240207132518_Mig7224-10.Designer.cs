@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Cinema.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240207025910_Mig-7224-00")]
-    partial class Mig722400
+    [Migration("20240207132518_Mig7224-10")]
+    partial class Mig722410
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,6 +24,59 @@ namespace Cinema.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("Cinema.Models.Cinema.MovieShow", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("HallCode")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MallCode")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MovieCode")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MovieName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("MovieShow");
+                });
+
+            modelBuilder.Entity("Cinema.Models.Cinema.MovieShowSeats", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("IsBooked")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("SeatCode")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ShowCode")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("MovieShowSeats");
+                });
 
             modelBuilder.Entity("Cinema.Models.CinemaBranch", b =>
                 {
@@ -55,7 +108,7 @@ namespace Cinema.Migrations
                     b.ToTable("CinemaBranch");
                 });
 
-            modelBuilder.Entity("Cinema.Models.Movie.Movie", b =>
+            modelBuilder.Entity("Cinema.Models.Movie", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -86,7 +139,7 @@ namespace Cinema.Migrations
                     b.ToTable("Movie");
                 });
 
-            modelBuilder.Entity("Cinema.Models.Movie.MovieHall", b =>
+            modelBuilder.Entity("Cinema.Models.MovieHall", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -98,10 +151,6 @@ namespace Cinema.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("HallCode")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("HallName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -120,7 +169,7 @@ namespace Cinema.Migrations
                     b.ToTable("MovieHall");
                 });
 
-            modelBuilder.Entity("Cinema.Models.Movie.MovieHallSeats", b =>
+            modelBuilder.Entity("Cinema.Models.MovieHallSeats", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -128,8 +177,9 @@ namespace Cinema.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<bool>("IsOccupied")
-                        .HasColumnType("bit");
+                    b.Property<string>("HallCode")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("RowNumber")
                         .HasColumnType("int");

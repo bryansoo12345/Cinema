@@ -5,7 +5,7 @@
 namespace Cinema.Migrations
 {
     /// <inheritdoc />
-    public partial class mig622400 : Migration
+    public partial class mig822401 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

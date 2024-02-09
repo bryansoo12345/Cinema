@@ -14,5 +14,7 @@ namespace Cinema.Models
         public string? Address { get; set; }
 
         public DateTime CreatedDateTime = DateTime.Now;
+        
+        
     }
 }

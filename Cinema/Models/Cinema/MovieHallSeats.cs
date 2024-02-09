@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Cinema.Models
 {
-    public class MovieHallSeats : Seat
+    public class MovieHallSeats
     {
         [Key]
         public int Id { get; set; }
@@ -16,16 +16,13 @@ namespace Cinema.Models
 
         [Required]
         public int SeatNumber { get; set; }
-
-        [Required]
-        public bool IsOccupied { get; set; }
                 
         [NotMapped]
         public string SeatCode { get; set; }
             
         public enum RowCode
         {
-            A, B,C,D,E,F,G, H,I,J,K,L,M,N,O,P,Q,R,S,T,U,
+            A,B,C,D,E,F,G, H,I,J,K,L,M,N,O,P,Q,R,S,T,U,
         }
 
     }

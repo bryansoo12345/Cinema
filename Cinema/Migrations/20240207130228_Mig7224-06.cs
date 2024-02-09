@@ -5,14 +5,21 @@
 namespace Cinema.Migrations
 {
     /// <inheritdoc />
-    public partial class Mig522401 : Migration
+    public partial class Mig722406 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AddColumn<string>(
-                name: "AccountType",
-                table: "UserAccounts",
+                name: "HallCode",
+                table: "MovieShow",
+                type: "nvarchar(max)",
+                nullable: false,
+                defaultValue: "");
+
+            migrationBuilder.AddColumn<string>(
+                name: "MallCode",
+                table: "MovieShow",
                 type: "nvarchar(max)",
                 nullable: false,
                 defaultValue: "");
@@ -22,8 +29,12 @@ namespace Cinema.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "AccountType",
-                table: "UserAccounts");
+                name: "HallCode",
+                table: "MovieShow");
+
+            migrationBuilder.DropColumn(
+                name: "MallCode",
+                table: "MovieShow");
         }
     }
 }

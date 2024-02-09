@@ -5,6 +5,14 @@
       "PackagePath": "staticwebassets\\Cinema.bundle.scp.css"
     },
     {
+      "Id": "C:\\MVC\\TEST123\\BS1\\Cinema\\Cinema\\wwwroot\\css\\AdminPanel\\all.min.css",
+      "PackagePath": "staticwebassets\\css\\AdminPanel\\all.min.css"
+    },
+    {
+      "Id": "C:\\MVC\\TEST123\\BS1\\Cinema\\Cinema\\wwwroot\\css\\AdminPanel\\sb-admin-2.min.css",
+      "PackagePath": "staticwebassets\\css\\AdminPanel\\sb-admin-2.min.css"
+    },
+    {
       "Id": "C:\\MVC\\TEST123\\BS1\\Cinema\\Cinema\\wwwroot\\css\\BookMovie\\bookmovie.css",
       "PackagePath": "staticwebassets\\css\\BookMovie\\bookmovie.css"
     },
@@ -19,6 +27,26 @@
     {
       "Id": "C:\\MVC\\TEST123\\BS1\\Cinema\\Cinema\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "C:\\MVC\\TEST123\\BS1\\Cinema\\Cinema\\wwwroot\\js\\AdminPanel\\AdminPanel.js",
+      "PackagePath": "staticwebassets\\js\\AdminPanel\\AdminPanel.js"
+    },
+    {
+      "Id": "C:\\MVC\\TEST123\\BS1\\Cinema\\Cinema\\wwwroot\\js\\AdminPanel\\bootstrap.bundle.min.js",
+      "PackagePath": "staticwebassets\\js\\AdminPanel\\bootstrap.bundle.min.js"
+    },
+    {
+      "Id": "C:\\MVC\\TEST123\\BS1\\Cinema\\Cinema\\wwwroot\\js\\AdminPanel\\bootstrap.bundle.min.js.map",
+      "PackagePath": "staticwebassets\\js\\AdminPanel\\bootstrap.bundle.min.js.map"
+    },
+    {
+      "Id": "C:\\MVC\\TEST123\\BS1\\Cinema\\Cinema\\wwwroot\\js\\AdminPanel\\jquery.min.js",
+      "PackagePath": "staticwebassets\\js\\AdminPanel\\jquery.min.js"
+    },
+    {
+      "Id": "C:\\MVC\\TEST123\\BS1\\Cinema\\Cinema\\wwwroot\\js\\AdminPanel\\jquery.min.map",
+      "PackagePath": "staticwebassets\\js\\AdminPanel\\jquery.min.map"
     },
     {
       "Id": "C:\\MVC\\TEST123\\BS1\\Cinema\\Cinema\\wwwroot\\js\\ModalPopup.js",

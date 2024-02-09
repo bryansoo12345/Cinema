@@ -15,7 +15,7 @@ namespace Cinema.Controllers
 
         public IActionResult UserAccounts()
         {   
-            IEnumerable<UserAccounts> UserAccountsList = _db.UserAccounts.ToList();
+            IEnumerable<Account> UserAccountsList = _db.Account.ToList();
             return View(UserAccountsList);
         }
 
@@ -27,11 +27,11 @@ namespace Cinema.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(UserAccounts userAccounts)
+        public IActionResult Create(Account userAccounts)
         {
             if (ModelState.IsValid)
             {
-                _db.UserAccounts.Add(userAccounts);
+                _db.Account.Add(userAccounts);
                 _db.SaveChanges();
                 return RedirectToAction("UserAccounts");
             }

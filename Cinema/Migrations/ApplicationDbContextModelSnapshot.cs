@@ -22,6 +22,40 @@ namespace Cinema.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("Cinema.Models.Account", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("AccountType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedDateTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Account");
+                });
+
             modelBuilder.Entity("Cinema.Models.CinemaBranch", b =>
                 {
                     b.Property<int>("Id")
@@ -49,7 +83,7 @@ namespace Cinema.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("CinemaBranch", (string)null);
+                    b.ToTable("CinemaBranch");
                 });
 
             modelBuilder.Entity("Cinema.Models.Movie", b =>
@@ -80,7 +114,7 @@ namespace Cinema.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Movie", (string)null);
+                    b.ToTable("Movie");
                 });
 
             modelBuilder.Entity("Cinema.Models.MovieHall", b =>
@@ -110,7 +144,7 @@ namespace Cinema.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("MovieHall", (string)null);
+                    b.ToTable("MovieHall");
                 });
 
             modelBuilder.Entity("Cinema.Models.MovieHallSeats", b =>
@@ -125,9 +159,6 @@ namespace Cinema.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("IsOccupied")
-                        .HasColumnType("bit");
-
                     b.Property<int>("RowNumber")
                         .HasColumnType("int");
 
@@ -136,10 +167,10 @@ namespace Cinema.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("MovieHallSeats", (string)null);
+                    b.ToTable("MovieHallSeats");
                 });
 
-            modelBuilder.Entity("Cinema.Models.UserAccounts", b =>
+            modelBuilder.Entity("Cinema.Models.MovieShow", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -147,27 +178,49 @@ namespace Cinema.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("AccountType")
+                    b.Property<string>("HallCode")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Password")
+                    b.Property<string>("MallCode")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UserName")
+                    b.Property<string>("MovieCode")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MovieName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("UserAccounts", (string)null);
+                    b.ToTable("MovieShow");
+                });
+
+            modelBuilder.Entity("Cinema.Models.MovieShowSeats", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("IsBooked")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("SeatCode")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ShowCode")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("MovieShowSeats");
                 });
 #pragma warning restore 612, 618
         }

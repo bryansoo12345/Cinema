@@ -1,7 +1,7 @@
 ﻿using Cinema.Data;
 using Cinema.Models;
-using Cinema.Models;
 using Microsoft.AspNetCore.Mvc;
+using NuGet.Packaging;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Cinema.Controllers
@@ -150,15 +150,38 @@ namespace Cinema.Controllers
         #endregion
 
 
-        #region BookMovie
+        #region Manage Cinema Movie Show
 
         public IActionResult BookMovie()
         {
             MovieHall? movieHall = _db.MovieHall.FirstOrDefault();
 
             movieHall.ShowingMovies = _db.Movie.Where(x => x.Genre == "Thriller").Take(5).ToList();
-            movieHall.Seats = MovieHall.PopulateSeats(movieHall.NumberOfRows, movieHall.NumberOfSeats).OrderBy(x=>x.SeatCode);
+            movieHall.Seats = MovieHall.PopulateSeats(movieHall.NumberOfRows, movieHall.NumberOfSeats);
             return View(movieHall);
+        }
+        [HttpPost]
+        public IActionResult ConfirmMovieShow(MovieShow.MovieShowModel movieShow)
+        {
+            List<MovieShowSeats> movieShowSeats = new List<MovieShowSeats>();
+            string ShowCode = movieShow.HallCode + "-B1";
+            MovieHall? movieHall = _db.MovieHall.FirstOrDefault();
+            foreach (var x in movieShow.SeatCodes)
+            {
+                if (!string.IsNullOrEmpty(x))
+                {
+                    
+                    movieShowSeats.Add(new MovieShowSeats
+                    {
+                        ShowCode = ShowCode,
+                        SeatCode = x,
+                        IsBooked = false 
+                    });
+                }
+            }
+            _db.MovieShowSeats.AddRange(movieShowSeats);
+            _db.SaveChanges();
+            return Json(new { success = true, message = "Movie show created successfully"});
         }
 
         #endregion

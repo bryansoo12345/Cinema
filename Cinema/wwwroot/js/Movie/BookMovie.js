@@ -7,17 +7,17 @@ const movieSelect = document.getElementById('movie');
 let ticketPrice = +movieSelect.value;
 
 //Update total and count
-function updateSelectedCount() {
-    const selectedSeats = document.querySelectorAll('.row .seat.selected');
-    const selectedSeatsCount = selectedSeats.length;
-    count.innerText = selectedSeatsCount;
-    total.innerText = selectedSeatsCount * ticketPrice;
-}
+//function updateSelectedCount() {
+//    const selectedSeats = document.querySelectorAll('.row .seat.selected');
+//    const selectedSeatsCount = selectedSeats.length;
+//    count.innerText = selectedSeatsCount;
+//    total.innerText = selectedSeatsCount * ticketPrice;
+//}
 
 //Movie Select Event
 movieSelect.addEventListener('change', e => {
     ticketPrice = +e.target.value;
-    updateSelectedCount();
+    //updateSelectedCount();
 });
 
 //Seat click event
@@ -26,5 +26,39 @@ container.addEventListener('click', e => {
         !e.target.classList.contains('occupied')) {
         e.target.classList.toggle('selected');
     }
-    updateSelectedCount();
+    //updateSelectedCount();
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+    var submitButton = document.querySelector('[data-save="modal"]');
+    submitButton.addEventListener("click", function () {
+        var seatElements = document.querySelectorAll(".seat");
+        var seatCodes = [];
+
+        seatElements.forEach(function (seat) {
+            var seatCode = seat.id;
+            seatCodes.push(seatCode);
+            console.log("Seat Code:", seatCode);
+        });
+
+        var movieShow = {
+            Id: 1, 
+            MovieName: "American Psycho", 
+            MovieCode: "AP-001",
+            MallCode: "OUGSC",
+            HallCode: "OUGSC-H7",
+            SeatCodes: seatCodes 
+        };
+
+        var url = "https://localhost:44372/Movie/ConfirmMovieShow";
+        $.post(url, { movieShow })
+            .done(function (data) {
+                alert("Seats booked successfully!");
+            })
+            .fail(function (xhr, status, error) {
+
+            });
+             
+    });
+});
+

@@ -64,7 +64,7 @@ $(function () {
             var rowToDelete = $(this).closest('tr');
 
             if (confirm('Are you sure you want to delete this movie?')) {
-                $.post(url, { id: id })
+                $.post(url, { id2: id })
                     .done(function (data) {
                         rowToDelete.remove();
                     })

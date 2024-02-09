@@ -20,7 +20,7 @@ namespace Cinema.Controllers
         {
             IEnumerable<Movie> objMovieList = _db.Movie
                                      //.Where(x => x.Genre == "Thriller")
-                                     .Take(9)
+                                     .Take(0)
                                      .ToList();
             return View(objMovieList);
         }

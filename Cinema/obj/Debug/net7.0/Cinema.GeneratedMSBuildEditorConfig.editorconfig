@@ -16,8 +16,20 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\MVC\TEST123\BS1\Cinema\Cinema
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/MVC/TEST123/BS1/Cinema/Cinema/Views/CinemaBranch/CinemaBranch.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2luZW1hQnJhbmNoXENpbmVtYUJyYW5jaC5jc2h0bWw=
+[C:/MVC/TEST123/BS1/Cinema/Cinema/Views/Admin/AdminPanel.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWRtaW5QYW5lbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/MVC/TEST123/BS1/Cinema/Cinema/Views/Admin/_AdminPanelDashboard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cX0FkbWluUGFuZWxEYXNoYm9hcmQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/MVC/TEST123/BS1/Cinema/Cinema/Views/Admin/_AdminPanelMovieShowings.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cX0FkbWluUGFuZWxNb3ZpZVNob3dpbmdzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/MVC/TEST123/BS1/Cinema/Cinema/Views/Admin/_CinemaBranch.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cX0NpbmVtYUJyYW5jaC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/MVC/TEST123/BS1/Cinema/Cinema/Views/Home/Index.cshtml]

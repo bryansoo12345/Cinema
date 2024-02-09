@@ -1,4 +1,4 @@
-﻿@model UserAccounts
+﻿@model Account
 @{
     ViewData["Title"] = "Index";
 }
@@ -36,7 +36,7 @@
             <div class ="mb-3">
                 <label asp-for="AccountType"></label>
                 <select asp-for="AccountType" class="form-control">
-                    @foreach (var genre in Enum.GetValues(typeof(Cinema.Models.UserAccounts.AccountTypeSelections)))
+                    @foreach (var genre in Enum.GetValues(typeof(Account.AccountTypeSelections)))
                     {
                         <option value="@genre">@genre</option>
                     }
