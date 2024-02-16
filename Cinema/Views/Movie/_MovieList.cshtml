@@ -19,9 +19,9 @@
                 <td width="20%">@obj.Description</td>
                 <td width="15%">@obj.Genre</td>
                 <td width="20%">
-                    @if (obj.CoverPhoto != null && obj.CoverPhoto.Length > 0)
+                    @if (obj.PhotoFile != null && obj.PhotoFile.Length > 0)
                     {
-                        var imageBase64 = Convert.ToBase64String(obj.CoverPhoto);
+                        var imageBase64 = Convert.ToBase64String(obj.PhotoFile);
                         <img src="data:image;base64,@imageBase64" alt="Cover Photo" class="img-thumbnail" />
                     }
                 </td>

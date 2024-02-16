@@ -20,19 +20,20 @@ namespace Cinema.Controllers
             return View();
         }
 
+        //Dynamic Partial View
         [HttpGet]
         public IActionResult LoadPartial(string partial)
         {
             try
             {
                 // Get the fully qualified type name including the namespace
-                string? typeName = "Cinema.Models." + partial; // Replace "YourNamespace" with the actual namespace of your type
+                string? typeName = System.Reflection.Assembly.GetExecutingAssembly().GetName().Name + ".Models." + partial; 
 
-                // Get the type of the entity you want to use
                 Type? entityType = Type.GetType(typeName);
 
                 if (entityType == null)
                 {
+                    //only add _ for shared modules, for example like _AdminPanelDashboard
                     return PartialView($"_{partial}");
                 }
                 else
@@ -45,11 +46,11 @@ namespace Cinema.Controllers
 
                     // Get the value of the DbSet property
                     var dbSet = dbSetProperty.GetValue(_db);
-                    // Cast the result to IEnumerable<object> if needed
+
                     IEnumerable<object> entityList = (IEnumerable<object>)dbSet;
 
                     // Pass entityList to the PartialView
-                    return PartialView($"_{partial}", entityList);
+                    return PartialView($"{partial}", entityList);
                 }
 
             }

@@ -3,22 +3,24 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Cinema.Models
 {
-    public class Movie
+    public class Movie : IImageEntity
     {
         [Key]
         public int Id { get; set; }
         [Required(ErrorMessage = "Please enter the movie name.")]
         public string Name { get; set; }
         public string Description { get; set; }
-
         public string Genre { get; set; }
 
-        public byte[]? CoverPhoto { get; set; }
+        #region Photo
 
         [Display(Name = "Choose the cover for the movie")]
         [NotMapped]
         public IFormFile? IFormPhoto { get; set; }
-        public DateTime CreatedDateTime { get; set; }
+
+        public byte[]? PhotoFile { get; set; }
+
+        #endregion
 
         public enum GenreType
         {
@@ -28,5 +30,11 @@ namespace Cinema.Models
             Thriller
         }
 
+        public class BuyTicketViewModel
+        {
+            public CinemaBranch CinemaBranch { get; set; }
+            public IEnumerable<Movie> ShowingMovies { get; set; }
+        }
     }
+
 }

@@ -15,9 +15,5 @@ namespace Cinema.Models
 
         public DateTime CreatedDateTime { get; set; }
 
-        protected Hall()
-        {
-            CreatedDateTime = DateTime.Now;
-        }
     }
 }

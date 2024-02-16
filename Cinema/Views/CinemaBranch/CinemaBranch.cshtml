@@ -1,0 +1,39 @@
+﻿@model IEnumerable<CinemaBranch>
+@{
+    ViewData["Title"] = "CinemaBranch";
+}
+
+
+<br />
+
+<div class="row pt-4">
+    <div class="col-6">
+        <h2 class="text-primary">Manage Cinema Branch</h2>
+    </div>
+    <div class="col-6 text-end">
+        <a asp-controller="CinemaBranch" asp-action="CreateCinemaBranch" class="btn btn-primary">Add New Cinema</a>
+
+    </div>
+</div>
+
+<br />
+<div id="PlaceHolderHere"></div>
+<table class="table table-bordered table-striped" style="width:100%">
+    <thead>
+        <tr>
+            <th>Mall</th>
+            <th>City</th>
+            <th>State</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var obj in Model)
+        {
+            <tr>
+                <td width="50%">@obj.MallName</td>
+                <td width="25%">@obj.City</td>
+                <td width="25%">@obj.State</td>
+            </tr>
+        }
+    </tbody>
+</table>

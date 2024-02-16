@@ -17,6 +17,10 @@
       "PackagePath": "staticwebassets\\css\\BookMovie\\bookmovie.css"
     },
     {
+      "Id": "C:\\MVC\\TEST123\\BS1\\Cinema\\Cinema\\wwwroot\\css\\Cinemas\\Cinemas.css",
+      "PackagePath": "staticwebassets\\css\\Cinemas\\Cinemas.css"
+    },
+    {
       "Id": "C:\\MVC\\TEST123\\BS1\\Cinema\\Cinema\\wwwroot\\css\\bootswatch.css",
       "PackagePath": "staticwebassets\\css\\bootswatch.css"
     },

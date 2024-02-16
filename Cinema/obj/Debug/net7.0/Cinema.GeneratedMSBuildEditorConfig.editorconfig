@@ -20,16 +20,24 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWRtaW5QYW5lbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/MVC/TEST123/BS1/Cinema/Cinema/Views/Admin/CinemaBranch.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQ2luZW1hQnJhbmNoLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/MVC/TEST123/BS1/Cinema/Cinema/Views/Admin/MovieShow.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cTW92aWVTaG93LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/MVC/TEST123/BS1/Cinema/Cinema/Views/Admin/_AdminPanelDashboard.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cX0FkbWluUGFuZWxEYXNoYm9hcmQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/MVC/TEST123/BS1/Cinema/Cinema/Views/Admin/_AdminPanelMovieShowings.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cX0FkbWluUGFuZWxNb3ZpZVNob3dpbmdzLmNzaHRtbA==
+[C:/MVC/TEST123/BS1/Cinema/Cinema/Views/CinemaBranch/CinemaBranch.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2luZW1hQnJhbmNoXENpbmVtYUJyYW5jaC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/MVC/TEST123/BS1/Cinema/Cinema/Views/Admin/_CinemaBranch.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cX0NpbmVtYUJyYW5jaC5jc2h0bWw=
+[C:/MVC/TEST123/BS1/Cinema/Cinema/Views/CinemaBranch/CreateCinemaBranch.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2luZW1hQnJhbmNoXENyZWF0ZUNpbmVtYUJyYW5jaC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/MVC/TEST123/BS1/Cinema/Cinema/Views/Home/Index.cshtml]
@@ -44,12 +52,24 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW92aWVcQm9va01vdmllLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/MVC/TEST123/BS1/Cinema/Cinema/Views/Movie/BuyTicket.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW92aWVcQnV5VGlja2V0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/MVC/TEST123/BS1/Cinema/Cinema/Views/Movie/Cinemas.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW92aWVcQ2luZW1hcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/MVC/TEST123/BS1/Cinema/Cinema/Views/Movie/ManageMovie.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW92aWVcTWFuYWdlTW92aWUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/MVC/TEST123/BS1/Cinema/Cinema/Views/Movie/Movie.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW92aWVcTW92aWUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/MVC/TEST123/BS1/Cinema/Cinema/Views/Movie/_BuyTicketList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW92aWVcX0J1eVRpY2tldExpc3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/MVC/TEST123/BS1/Cinema/Cinema/Views/Movie/_MovieList.cshtml]

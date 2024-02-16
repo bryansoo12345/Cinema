@@ -20,9 +20,9 @@
                         {
                             <div class="col-lg-4 d-none d-lg-block">
                                 <div class="card card-with-margin">
-                                    @if (movie.CoverPhoto != null && movie.CoverPhoto.Length > 0)
+                                    @if (movie.PhotoFile != null && movie.PhotoFile.Length > 0)
                                     {
-                                        var imageBase64 = Convert.ToBase64String(movie.CoverPhoto);
+                                        var imageBase64 = Convert.ToBase64String(movie.PhotoFile);
                                         <img src="data:image;base64,@imageBase64" alt="Cover Photo" class="img-thumbnail" />
                                     }
                                     <div class="card-body">

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "gLAaxtAwxsjoeFQwrRGe3XN5LBoqS+aQ98h/7F0Qzik=",
+  "Hash": "HLo9/Dppn4nCm23dndw2Wc2rTV94t/d3QFz7mFWInzc=",
   "Source": "Cinema",
   "BasePath": "_content/Cinema",
   "Mode": "Default",
@@ -117,6 +117,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\bootswatch.css"
+    },
+    {
+      "Identity": "C:\\MVC\\TEST123\\BS1\\Cinema\\Cinema\\wwwroot\\css\\Cinemas\\Cinemas.css",
+      "SourceId": "Cinema",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\MVC\\TEST123\\BS1\\Cinema\\Cinema\\wwwroot\\",
+      "BasePath": "_content/Cinema",
+      "RelativePath": "css/Cinemas/Cinemas.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\Cinemas\\Cinemas.css"
     },
     {
       "Identity": "C:\\MVC\\TEST123\\BS1\\Cinema\\Cinema\\wwwroot\\css\\site.css",

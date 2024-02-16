@@ -1,0 +1,51 @@
+﻿@model CinemaBranch
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+
+<form method="post" enctype="multipart/form-data">
+    <div class="border p-3 mt-4">
+        <div class="row-pb-2">
+            <h2 class="text-primary">Create Cinema</h2>
+            </hr>
+        </div>
+        <div class="modal-body">
+
+            <div class="mb-3">
+                <label asp-for="MallName"></label>
+                <input asp-for="MallName" class="form-control" />
+                <span asp-validation-for="MallName" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="City"></label>
+                <input asp-for="City" class="form-control" />
+                <span asp-validation-for="City" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="State"></label>
+                <input asp-for="State" class="form-control" />
+                <span asp-validation-for="State" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Address"></label>
+                <input asp-for="Address" class="form-control" />
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="IFormPhoto" class="form-label">Cinema Photo</label>
+                <input asp-for="IFormPhoto" class="form-control">
+                <span asp-validation-for="IFormPhoto" class="text-danger" accept=".png, .jpg, .jpeg, .webp"></span>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-primary">Create</button>&nbsp;
+            <a asp-controller="CinemaBranch" asp-action="CinemaBranch" type="button" class="btn btn-secondary" data-save="modal">Back</a>
+        </div>
+    </div>
+</form>
+
+
+
+

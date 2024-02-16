@@ -20,8 +20,6 @@ namespace Cinema.Models
         [Display(Name = "Account Type")]
         public string AccountType { get; set; }
 
-        public DateTime CreatedDateTime { get; set; }
-
         public enum AccountTypeSelections
         {
             Admin,

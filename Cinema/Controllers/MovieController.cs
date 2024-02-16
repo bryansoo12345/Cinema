@@ -23,6 +23,40 @@ namespace Cinema.Controllers
             return View(objMovieList);
         }
 
+        public IActionResult Cinemas()
+        {
+            IEnumerable<CinemaBranch> objCinemaList = _db.CinemaBranch.ToList();
+            return View(objCinemaList);
+        }
+
+        [HttpGet]
+        public IActionResult BuyTicket(int id)
+        {
+            if (id == 0 || id == null)
+            {
+                return NotFound();
+            }
+            Movie.BuyTicketViewModel buyTicketViewModel = new Movie.BuyTicketViewModel();
+            buyTicketViewModel.CinemaBranch = _db.CinemaBranch.FirstOrDefault(x => x.Id == id);
+            buyTicketViewModel.ShowingMovies = _db.Movie.Where(x=>x.Genre=="Thriller").Take(3).ToList();
+            if (buyTicketViewModel.CinemaBranch == null)
+            {
+                return NotFound();
+            }
+            //string methodName = nameof(Edit);
+            //ViewBag.MethodName = methodName;
+            return View("BuyTicket", buyTicketViewModel);
+        }
+
+        public IActionResult BookMovie()
+        {
+            MovieHall? movieHall = _db.MovieHall.FirstOrDefault();
+
+            movieHall.ShowingMovies = _db.Movie.Where(x => x.Genre == "Thriller").Take(1).ToList();
+            movieHall.Seats = MovieHall.PopulateSeats(movieHall.NumberOfRows, movieHall.NumberOfSeats);
+            return View(movieHall);
+        }
+
         #endregion
 
         #region Manage Movie
@@ -96,7 +130,7 @@ namespace Cinema.Controllers
                         using (var memoryStream = new MemoryStream())
                         {
                             movie.IFormPhoto.CopyTo(memoryStream);
-                            movieToUpdate.CoverPhoto = memoryStream.ToArray();
+                            movieToUpdate.PhotoFile = memoryStream.ToArray();
                         }
                     }
                     //_db.Movie.Update();
@@ -117,7 +151,7 @@ namespace Cinema.Controllers
                 using (var memoryStream = new MemoryStream())
                 {
                     movie.IFormPhoto.CopyTo(memoryStream);
-                    movie.CoverPhoto = memoryStream.ToArray(); 
+                    movie.PhotoFile = memoryStream.ToArray(); 
                 }
             }
         }
@@ -152,14 +186,6 @@ namespace Cinema.Controllers
 
         #region Manage Cinema Movie Show
 
-        public IActionResult BookMovie()
-        {
-            MovieHall? movieHall = _db.MovieHall.FirstOrDefault();
-
-            movieHall.ShowingMovies = _db.Movie.Where(x => x.Genre == "Thriller").Take(5).ToList();
-            movieHall.Seats = MovieHall.PopulateSeats(movieHall.NumberOfRows, movieHall.NumberOfSeats);
-            return View(movieHall);
-        }
         [HttpPost]
         public IActionResult ConfirmMovieShow(MovieShow.MovieShowModel movieShow)
         {
