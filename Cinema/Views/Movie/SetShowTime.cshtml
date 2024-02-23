@@ -1,0 +1,55 @@
+﻿@using Cinema.Models
+@model MovieHall
+
+
+<link rel="stylesheet" href="~/css/BookMovie/bookmovie.css" />
+
+<div id="movie"  class="movie-container">
+    <label>@Html.DisplayFor(model => model.MallName) </label>
+    <br />
+    <label>@Html.DisplayFor(model => model.MovieName)</label>
+
+    
+    <ul class="showcase">
+        <li>
+            <div class="seat"></div>
+            <small>N/A</small>
+        </li>
+        <li>
+            <div class="seat selected"></div>
+            <small>Selected</small>
+        </li>
+        <li>
+            <div class="seat occupied"></div>
+            <small>Occupied</small>
+        </li>
+    </ul>
+    <input class="code" type="hidden" name="secret_value" value="@Model.MovieShowTimeCode">
+    <div class="container">
+        <div class="screen"></div>
+        <form id="seatForm">
+            <div class="seat-container">
+                <div class="seat-container">
+                    @for (int i = 0; i < Model.NumberOfRows; i++)
+                    {
+                        <div class="row">
+                            @for (int j = 0; j < Model.NumberOfSeats; j++)
+                            {
+                                var seatIndex = i * Model.NumberOfSeats + j;
+                                var seat = Model.Seats[seatIndex];
+                                <div class="seat" id="@seat.SeatCode"></div>
+                            }
+                        </div>
+                    }
+                </div>
+                <p class="text">
+                    You have selected <span id="count">0</span> seats for the total price of Rs. <span id="total">0</span>
+                </p>
+            </div>
+            <button type="button" class="btn btn-primary" data-save="modal">Save changes</button>
+        </form>
+    </div>
+</div>
+
+<script src="~/js/Movie/BookMovie.js" asp-append-version="true"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" asp-append-version="true"></script>

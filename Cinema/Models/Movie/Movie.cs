@@ -11,7 +11,8 @@ namespace Cinema.Models
         public string Name { get; set; }
         public string Description { get; set; }
         public string Genre { get; set; }
-
+        [Required]
+        public string MovieCode { get; set; }
         #region Photo
 
         [Display(Name = "Choose the cover for the movie")]
@@ -33,7 +34,7 @@ namespace Cinema.Models
         public class BuyTicketViewModel
         {
             public CinemaBranch CinemaBranch { get; set; }
-            public IEnumerable<Movie> ShowingMovies { get; set; }
+            public IEnumerable<MovieShow> MovieShows { get; set; }
         }
     }
 

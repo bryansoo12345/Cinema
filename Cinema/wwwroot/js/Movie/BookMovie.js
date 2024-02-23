@@ -33,27 +33,30 @@ document.addEventListener("DOMContentLoaded", function () {
     var submitButton = document.querySelector('[data-save="modal"]');
     submitButton.addEventListener("click", function () {
         var seatElements = document.querySelectorAll(".seat");
+        var showTimeCode = document.querySelector(".code").value;
+
         var seatCodes = [];
+        var desiredSeats = [];
 
         seatElements.forEach(function (seat) {
             var seatCode = seat.id;
             seatCodes.push(seatCode);
-            console.log("Seat Code:", seatCode);
-        });
 
-        var movieShow = {
+            if (seat.classList.contains("selected")) {
+                desiredSeats.push(seatCode);
+            }
+
+        });
+        var BookMovie = {
             Id: 1, 
-            MovieName: "American Psycho", 
-            MovieCode: "AP-001",
-            MallCode: "OUGSC",
-            HallCode: "OUGSC-H7",
-            SeatCodes: seatCodes 
+            MovieShowTimeCode: showTimeCode,
+            DesiredSeats: desiredSeats 
         };
 
-        var url = "https://localhost:44372/Movie/ConfirmMovieShow";
-        $.post(url, { movieShow })
+        var url = "https://localhost:44372/Movie/ConfirmBookMovie";
+        $.post(url, { BookMovie })
             .done(function (data) {
-                alert("Seats booked successfully!");
+                alert("Booked Seats Successful!");
             })
             .fail(function (xhr, status, error) {
 

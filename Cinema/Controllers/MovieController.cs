@@ -1,6 +1,8 @@
 ﻿using Cinema.Data;
 using Cinema.Models;
+using Humanizer.Localisation;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using NuGet.Packaging;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
@@ -36,26 +38,57 @@ namespace Cinema.Controllers
             {
                 return NotFound();
             }
+
             Movie.BuyTicketViewModel buyTicketViewModel = new Movie.BuyTicketViewModel();
             buyTicketViewModel.CinemaBranch = _db.CinemaBranch.FirstOrDefault(x => x.Id == id);
-            buyTicketViewModel.ShowingMovies = _db.Movie.Where(x=>x.Genre=="Thriller").Take(3).ToList();
-            if (buyTicketViewModel.CinemaBranch == null)
+            buyTicketViewModel.MovieShows = _db.MovieShow.Where(x => x.MallCode == buyTicketViewModel.CinemaBranch.MallCode).ToList();
+            foreach (var x in buyTicketViewModel.MovieShows)
+            {
+                x.Movie = _db.Movie.Where(y => y.MovieCode == x.MovieCode).FirstOrDefault();
+                x.MovieShowTimes = _db.MovieShowTimes.Where(y => y.MovieShowTimeCode == x.MovieShowTimeCode).ToList();
+            }
+
+            if (buyTicketViewModel.CinemaBranch == null || buyTicketViewModel.CinemaBranch == null)
             {
                 return NotFound();
             }
-            //string methodName = nameof(Edit);
-            //ViewBag.MethodName = methodName;
             return View("BuyTicket", buyTicketViewModel);
         }
+        //Good Practice: Pass simple and non sensitive data through parameters to reduce interactions with database.
 
-        public IActionResult BookMovie()
+
+        [HttpGet]
+        public IActionResult BookMovie(string ShowCode, string HallCode, string MovieName)
         {
-            MovieHall? movieHall = _db.MovieHall.FirstOrDefault();
-
-            movieHall.ShowingMovies = _db.Movie.Where(x => x.Genre == "Thriller").Take(1).ToList();
-            movieHall.Seats = MovieHall.PopulateSeats(movieHall.NumberOfRows, movieHall.NumberOfSeats);
-            return View(movieHall);
+            MovieShowTime.BookMovieViewModel BookMovieViewModel = new MovieShowTime.BookMovieViewModel();
+            // Use ShowCode to get MovieHall From DB. 
+            BookMovieViewModel.MovieShowSeats = _db.MovieShowSeats.Where(x => x.MovieShowTimeCode == ShowCode).ToList();
+            BookMovieViewModel.MovieShowTime = _db.MovieShowTimes.Where(x=>x.MovieShowTimeCode==ShowCode).FirstOrDefault();
+            return View(BookMovieViewModel);
         }
+
+        [HttpPost]
+        public IActionResult ConfirmBookMovie(MovieShowTime.BookTicketModel BookMovie)
+        {
+            List<MovieShowSeats> mMovieShowSeats = _db.MovieShowSeats.Where(x => x.MovieShowTimeCode == BookMovie.MovieShowTimeCode).ToList();
+
+            if (mMovieShowSeats != null && mMovieShowSeats.Any())
+            {
+                // Update IsBooked for the desired seats
+                foreach (var seat in mMovieShowSeats.Where(s => BookMovie.DesiredSeats.Contains(s.SeatCode)))
+                {
+                    seat.IsBooked = true;
+                }
+
+                // Save changes to database
+                _db.SaveChanges();
+
+                return Json(new { success = true, message = "Movie booked successfully" });
+            }
+            var errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage);
+            return Json(new { success = false, errors });
+        }
+        
 
         #endregion
 
@@ -80,8 +113,10 @@ namespace Cinema.Controllers
         //[ValidateAntiForgeryToken]
         public IActionResult Create(Movie movie)
         {
+            ModelState.Remove("MovieCode");
             if (ModelState.IsValid)
             {
+                movie.MovieCode = "MV" + movie.Genre.ToString().Substring(0, 2) + "01";
                 SaveImageFile(movie);
                 _db.Movie.Add(movie);
                 _db.SaveChanges();
@@ -114,7 +149,6 @@ namespace Cinema.Controllers
         //[ValidateAntiForgeryToken]
         public IActionResult Edit(Movie movie)
         {
-
             if (ModelState.IsValid)
             {
                 var movieToUpdate = _db.Movie.FirstOrDefault(m => m.Id == movie.Id);
@@ -187,10 +221,10 @@ namespace Cinema.Controllers
         #region Manage Cinema Movie Show
 
         [HttpPost]
-        public IActionResult ConfirmMovieShow(MovieShow.MovieShowModel movieShow)
+        public IActionResult ConfirmShowTime(MovieShowTime.SetShowTimeModel movieShow)
         {
             List<MovieShowSeats> movieShowSeats = new List<MovieShowSeats>();
-            string ShowCode = movieShow.HallCode + "-B1";
+            //string ShowCode = movieShow.HallCode + "-B1";
             MovieHall? movieHall = _db.MovieHall.FirstOrDefault();
             foreach (var x in movieShow.SeatCodes)
             {
@@ -199,7 +233,7 @@ namespace Cinema.Controllers
                     
                     movieShowSeats.Add(new MovieShowSeats
                     {
-                        ShowCode = ShowCode,
+                        MovieShowTimeCode = movieShow.MovieShowTimeCode,
                         SeatCode = x,
                         IsBooked = false 
                     });
@@ -208,6 +242,19 @@ namespace Cinema.Controllers
             _db.MovieShowSeats.AddRange(movieShowSeats);
             _db.SaveChanges();
             return Json(new { success = true, message = "Movie show created successfully"});
+        }
+
+        [HttpGet]
+        //Good Practice: Pass simple and non sensitive data through parameters to reduce interactions with database.
+        //This method is to for admin/cinema users to set show time. the ui will allow admin to select movie, select hall, then initliaze the cinema hall for showtime.
+        public IActionResult SetShowTime(string ShowCode, string HallCode, string MovieName)
+        {
+            // Use ShowCode to get MovieHall From DB. 
+            MovieHall? MovieHall = _db.MovieHall.Where(x => x.MovieShowTimeCode == ShowCode).FirstOrDefault();
+            MovieHall.MovieName = MovieName;
+            MovieHall.HallCode = HallCode;
+            MovieHall.Seats = MovieHall.PopulateSeats(MovieHall.NumberOfRows, MovieHall.NumberOfSeats);
+            return View(MovieHall);
         }
 
         #endregion

@@ -6,7 +6,7 @@ namespace Cinema.Models
     {
         [Key]
         public int Id { get; set; }
-        public string ShowCode { get; set; }
+        public string MovieShowTimeCode { get; set; }
         public string SeatCode { get; set; }
         public bool IsBooked { get; set; } = false;
 

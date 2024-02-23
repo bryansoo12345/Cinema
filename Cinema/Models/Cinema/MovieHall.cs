@@ -12,9 +12,6 @@ namespace Cinema.Models
         public int NumberOfSeats { get; set; }
 
         [NotMapped]
-        public List<Movie> ShowingMovies { get; set; }
-
-        [NotMapped]
         public List<MovieHallSeats> Seats { get; set; }
 
         public void AddMovie(Movie movie)

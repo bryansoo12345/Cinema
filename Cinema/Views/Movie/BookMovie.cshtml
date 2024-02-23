@@ -1,17 +1,15 @@
 ﻿@using Cinema.Models
-@model MovieHall
+@model MovieShowTime.BookMovieViewModel
 
 
 <link rel="stylesheet" href="~/css/BookMovie/bookmovie.css" />
 
 <div id="movie"  class="movie-container">
-    <label>@Html.DisplayFor(model => model.MallName) </label>
-    <select  class="form-control">
-        @foreach (var movie in Model.ShowingMovies)
-        {
-            <option value="@movie.Name">@movie.Name</option>
-        }
-    </select>
+    <label>@Html.DisplayFor(model => model.MovieShowTime.MallName) </label>
+    <br />
+    <label>@Html.DisplayFor(model => model.MovieShowTime.MovieName)</label>
+    <label>@Html.DisplayFor(model => model.MovieShowTime.HallCode)</label>
+
     
     <ul class="showcase">
         <li>
@@ -27,23 +25,27 @@
             <small>Occupied</small>
         </li>
     </ul>
-
+    <input class="code" type="hidden" name="secret_value" value="@Model.MovieShowTime.MovieShowTimeCode">
     <div class="container">
         <div class="screen"></div>
         <form id="seatForm">
             <div class="seat-container">
                 <div class="seat-container">
-                    @for (int i = 0; i < Model.NumberOfRows; i++)
-                    {
-                        <div class="row">
-                            @for (int j = 0; j < Model.NumberOfSeats; j++)
-                            {
-                                var seatIndex = i * Model.NumberOfSeats + j;
-                                var seat = Model.Seats[seatIndex];
-                                <div class="seat" id="@seat.SeatCode"></div>
-                            }
-                        </div>
-                    }
+                        @{
+                            // Assuming Model.MovieShowSeats is a List<string> containing seat codes like "A1", "A2", "B1", etc.
+                            // Get distinct row letters (A, B, C, etc.) from seat codes
+
+                            var distinctRows = Model.MovieShowSeats.Select(seat => seat.SeatCode.Substring(0, 1)).Distinct().OrderBy(row => row);
+                        }
+                        @foreach (var row in distinctRows)
+                        {
+                            <div class="row">
+                                @foreach (var seat in Model.MovieShowSeats.Where(s => s.SeatCode.StartsWith(row)))
+                                {
+                                <div class="seat @(seat.IsBooked ? "occupied" : "")" id="@seat.SeatCode"></div>
+                                }
+                            </div>
+                        }
                 </div>
                 <p class="text">
                     You have selected <span id="count">0</span> seats for the total price of Rs. <span id="total">0</span>

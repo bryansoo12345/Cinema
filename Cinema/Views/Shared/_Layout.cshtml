@@ -1,13 +1,43 @@
-﻿<!DOCTYPE html>
+﻿
+@{
+    string roleType = LoginInfo.RoleType;
+}
+@using  Cinema.Models.Utilities
+@using Cinema.Models
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Cinema</title>
-    @*<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />*@
-    <link rel="stylesheet" href="~/css//bootswatch.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/Cinema.styles.css" asp-append-version="true" />
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>MBS - Movie Booking System</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+    <!-- Favicons -->
+    <link href="~/css/assets/img/favicon.png" rel="icon">
+    <link href="~/css/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Raleway:300,400,500,700,800" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link rel="stylesheet" href="~/css/assets/vendor/aos/aos.css" />
+    <link rel="stylesheet" href="~/css/assets/vendor/aos/aos.css">
+    <link rel="stylesheet" href="~/css/assets/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/assets/vendor/bootstrap-icons/bootstrap-icons.css">
+    <link rel="stylesheet" href="~/css/assets/vendor/glightbox/css/glightbox.min.css">
+    <link rel="stylesheet" href="~/css/assets/vendor/swiper/swiper-bundle.min.css">
+
+    <!-- Template Main CSS File -->
+    <link href="~/css/assets/css/style.css" rel="stylesheet">
+
+    <!-- =======================================================
+    * Template Name: TheEvent
+    * Updated: Feb 06 2024 with Bootstrap v5.3.2
+    * Template URL: https://bootstrapmade.com/theevent-conference-event-bootstrap-template/
+    * Author: BootstrapMade.com
+    * License: https://bootstrapmade.com/license/
+    ======================================================== -->
 </head>
 <body>
     <header>
@@ -29,15 +59,26 @@
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="Movie" asp-action="ManageMovie">Manage Movies</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Movie" asp-action="Cinemas">Cinemas</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="UserAccounts" asp-action="UserAccounts">Manage User</a>
-                        </li>
-@*                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="CinemaBranch" asp-action="CinemaBranch">Cinema Branch</a>
-                        </li>*@
+
+                        @if (roleType == Account.AccountTypeSelections.Admin.ToString())
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="Movie" asp-action="Cinemas">Cinemas</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="UserAccounts" asp-action="UserAccounts">Manage User</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="Admin" asp-action="AdminPanel">Admin Panel</a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="Movie" asp-action="Cinemas">Cinemas</a>
+                            </li>
+                        }
+
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Manage Cinemas</a>
                             <div class="dropdown-menu">
@@ -48,24 +89,21 @@
                                 <a class="dropdown-item" href="#">Separated link</a>
                             </div>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Admin" asp-action="AdminPanel">Admin Panel</a>
-                        </li>
                     </ul>
                     <form class="d-flex">
                         <input class="form-control me-sm-2" type="search" placeholder="Search">
-                        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+                        <a class="btn btn-secondary" asp-area="" asp-controller="Login" asp-action="@(!LoginInfo.IsLoggedIn ? "Login" : "Logout")">@(!LoginInfo.IsLoggedIn ? "Login" : "Logout")</a>
                     </form>
                 </div>
             </div>
         </nav>
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            <br />
+    <div class="container-fluid" style="padding-left: 0; padding-right: 0;">
+        <main role="main">
             @RenderBody()
         </main>
     </div>
+
 
     <footer class="border-top footer text-muted">
         <div class="container">

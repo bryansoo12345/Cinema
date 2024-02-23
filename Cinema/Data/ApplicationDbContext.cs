@@ -24,6 +24,9 @@ namespace Cinema.Data
         public DbSet<MovieShow> MovieShow { get; set; }
 
         public DbSet<MovieShowSeats> MovieShowSeats { get; set; }
+
+        public DbSet<MovieShowTime> MovieShowTimes { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             foreach (var entityType in modelBuilder.Model.GetEntityTypes())

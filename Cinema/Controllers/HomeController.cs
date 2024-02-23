@@ -1,5 +1,6 @@
 ﻿using Cinema.Data;
 using Cinema.Models;
+using Cinema.Models.Utilities;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -18,10 +19,8 @@ namespace Cinema.Controllers
 
         public IActionResult Index()
         {
-            IEnumerable<Movie> objMovieList = _db.Movie
-                                     //.Where(x => x.Genre == "Thriller")
-                                     .Take(1)
-                                     .ToList();
+            IEnumerable<Movie> objMovieList = _db.Movie.Take(1).ToList();
+            string test = LoginInfo.RoleType;
             return View(objMovieList);
         }
 
