@@ -1,4 +1,5 @@
 ﻿using Cinema.Models;
+using Cinema.Models.UserAccounts;
 using Microsoft.EntityFrameworkCore;
 
 namespace Cinema.Data
@@ -26,7 +27,9 @@ namespace Cinema.Data
         public DbSet<MovieShowSeats> MovieShowSeats { get; set; }
 
         public DbSet<MovieShowTime> MovieShowTimes { get; set; }
+        public DbSet<BranchHall> BranchHall { get; set; }
 
+        public DbSet<BranchManager> BranchManager { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             foreach (var entityType in modelBuilder.Model.GetEntityTypes())

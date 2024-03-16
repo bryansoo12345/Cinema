@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Cinema.Models
 {
@@ -20,11 +22,20 @@ namespace Cinema.Models
         [Display(Name = "Account Type")]
         public string AccountType { get; set; }
 
+        public string UserToken { get; set; }
+
         public enum AccountTypeSelections
         {
+            [Description("Admin")]
             Admin,
-            Customer
+            [Description("Customer")]
+            Customer,
+            [Description("Branch Manager")]
+            BranchManager
         }
+        [NotMapped]
+        [Description("Manager's Branch")]
+        public string BranchCode { get; set; }
 
     }
 }

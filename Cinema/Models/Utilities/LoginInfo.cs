@@ -1,24 +1,34 @@
-﻿namespace Cinema.Models.Utilities
+﻿using Cinema.Models.UserAccounts;
+using static Cinema.Models.Account;
+
+namespace Cinema.Models.Utilities
 {
     public static class LoginInfo
     {
-        private static string _roleType;
-        private static bool _isLoggedIn;
 
-        public static string RoleType
+        public static string RoleType { get; private set; }
+        public static string UserName { get; private set; }
+        public static string UserToken { get; private set; }
+
+        #region BranchManager
+        public static string BranchCode { get; private set; }
+        #endregion
+
+        public static bool IsLoggedIn => !string.IsNullOrEmpty(RoleType);
+
+        // Method to set login information
+        public static void SetLoginInfo(string roleType, string userName, string userToken)
         {
-            get { return _roleType; }
-            set
-            {
-                _roleType = value;
-                _isLoggedIn = true; // Set _IsLoggedIn to true when RoleType is set
-            }
+            RoleType = roleType;
+            UserName = userName;
+            UserToken = userToken;
+
         }
-
-        public static bool IsLoggedIn
+        public static void SetBranchManager(string branchToken)
         {
-            get { return _isLoggedIn; }
+            BranchCode = branchToken; 
         }
     }
+
 
 }

@@ -1,0 +1,84 @@
+﻿@model IEnumerable<MovieHall>
+@{
+    ViewData["Title"] = "MovieHall";
+}
+
+<br />
+<div class="table-container">
+    <div class="row pt-4 justify-content-between align-items-center">
+
+        @*this one can add for Advanced Search and Manage Hall *@
+
+@*        <div class="col-md-4">
+            <h1 class="text-primary">Select the date:</h1>
+        </div>
+        <div class="col-md-8 d-flex justify-content-left">
+            <div class="mr-2">
+                <input type="date" class="form-control" id="MovieShowDate" name="MovieShowDate">
+            </div>
+            <div>
+                <a asp-controller="CinemaBranch" asp-action="CreateCinemaBranch" class="btn btn-primary">Select Date</a>
+            </div>
+        </div>*@
+  
+    </div>
+    <br />
+    <div class="row align-items-center" style="margin-bottom:5px">
+        <div class="col-md-6">
+            <h2 class="text-primary">Manage Branch Movie Hall</h2>
+        </div>
+        <div class="col-md-6 text-right">
+            <a asp-controller="CinemaBranch" asp-action="CreateCinemaBranch" class="btn btn-primary">Advanced Search</a>
+            <button type="button" class="btn btn-primary" data-toggle="ajax-modal" data-target="#addMovie" data-url="@Url.Action("AddMovieHall")">Add New Hall</button>
+        </div>
+
+    </div>
+    <div id="PlaceHolderHere"></div>
+    <table class="table table-bordered table-striped" style="width:100%">
+        <thead>
+            <tr>
+                <th>Cover Photo</th> 
+                <th>Movie Name</th>
+                <th>Show Code</th>
+                <th>ShowDate</th>
+                
+                <th style="text-align: center;">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var obj in Model)
+            {
+                <tr>
+                    <td width="20%">
+                        @*                        @if (obj.PhotoFile != null && obj.PhotoFile.Length > 0)
+                    {
+                    var imageBase64 = Convert.ToBase64String(obj.PhotoFile);
+                    <img src="data:image;base64,@imageBase64" alt="Cover Photo" class="img-thumbnail" />
+                    }*@
+                    </td>
+                    <td width="25%">@obj.MovieName</td>
+                    @*<td width="20%">@obj.MovieShowTimeCode</td>*@
+                    @*<td width="15%">@obj.ShowDate</td>*@
+
+                    <td width="20%" style="text-align: center;">
+                        <button type="button" class="btn btn-outline-info" data-toggle="ajax-modal" data-target="#addMovie" data-url="@Url.Action("ManageHall")" data-id="@obj.Id">Manage Hall</button>&nbsp;
+                        <button type="button" class="btn btn-outline-warning delete-movie-btn" data-id="@obj.Id" data-url="@Url.Action("DeleteHall")">
+                            Delete
+                        </button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<style>
+    .table-container {
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 85%;
+    }
+</style>
+
+
+
+                        

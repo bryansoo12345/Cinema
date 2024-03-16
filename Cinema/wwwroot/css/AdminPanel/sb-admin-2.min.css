@@ -55,16 +55,16 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
     display: block
 }
 
-body {
+/*body {
     margin: 0;
     font-family: Nunito,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.5;
-    color: #858796;
-    text-align: left;
-    background-color: #fff
-}
+    font-size: 1rem;z
+    font-weight: 600;
+    line-height: 1.5;*/
+    /*color: #858796;*/
+    /*text-align: left;
+    background-color: #242333
+}*/
 
 [tabindex="-1"]:focus:not(:focus-visible) {
     outline: 0 !important
@@ -6451,10 +6451,10 @@ a.bg-dark:focus, a.bg-dark:hover, button.bg-dark:focus, button.bg-dark:hover {
     background-color: #42444e !important
 }
 
-.bg-white {
+/*.bg-white {
     background-color: #fff !important
 }
-
+*/
 .bg-transparent {
     background-color: transparent !important
 }
@@ -9943,9 +9943,9 @@ a:focus {
 #wrapper {
     display: flex
 }
-
+/* Admin Panel Body */
     #wrapper #content-wrapper {
-        background-color: #f8f9fc;
+        background-color: #dedcd4;
         width: 100%;
         overflow-x: hidden
     }
@@ -10046,11 +10046,13 @@ a:focus {
     animation-timing-function: opacity cubic-bezier(0,1,.4,1)
 }
 
+
 .bg-gradient-primary {
-    background-color: #4e73df;
-    background-image: linear-gradient(180deg,#4e73df 10%,#224abe 100%);
-    background-size: cover
+    background-image: linear-gradient(180deg, rgb(223, 105, 25), rgb(36, 35, 51));
+    background-size: cover;
 }
+
+
 
 .bg-gradient-secondary {
     background-color: #858796;

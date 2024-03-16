@@ -29,13 +29,13 @@
                                 <th scope="col">Speakers</th>
                                 <th scope="col">Session</th>
                                 <th scope="col">Venue</th>
-                                <th class="text-center" scope="col">Venue</th>
+                                <th class="text-center" scope="col"></th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach (var movies in Model.MovieShows)
                             {
-                                <tr class="inner-box">
+                                <tr class="inner-box show-list">
                                     <th scope="row">
                                         <div class="event-date">
                                             <span>16</span>
@@ -47,7 +47,7 @@
                                             @if (movies.Movie.PhotoFile != null && movies.Movie.PhotoFile.Length > 0)
                                             {
                                                 var imageBase64 = Convert.ToBase64String(movies.Movie.PhotoFile);
-                                                <img src="data:image;base64,@imageBase64" alt="Mall Photo" class="img-fluid" style="width: 350px; height: 400px; "/>
+                                                <img src="data:image;base64,@imageBase64" alt="Mall Photo" class="img-fluid" style="width: 370px; height: 550px; margin-top:10px; margin-bottom:10px; "/>
                                             }
                                         </div>
                                     </td>
@@ -64,8 +64,7 @@
                                                 <div class="time">
                                                     @foreach (var showtime in movies.MovieShowTimes)
                                                     {
-
-                                                        <a class="btn btn-warning" asp-area="" asp-controller="Movie" asp-action="BookMovie"  asp-route-ShowCode="@showtime.MovieShowTimeCode" asp-route-HallCode="@showtime.HallCode" asp-route-MovieName="@movies.Movie.Name" style="margin: 5px;">@showtime.StartTime.ToString("h:mm tt") - @showtime.EndTime.ToString("h:mm tt")</a>
+                                                        <a class="btn btn-info" asp-area="" asp-controller="Movie" asp-action="BookMovie"  asp-route-ShowCode="@showtime.MovieShowTimeCode" asp-route-HallCode="@showtime.HallCode" asp-route-MovieName="@movies.Movie.Name" style="margin: 5px;">@showtime.StartTime.ToString("h:mm tt") - @showtime.EndTime.ToString("h:mm tt")</a>
                                                     }
                                                 </div>
 
@@ -74,9 +73,7 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <div class="r-no">
-                                            <span>Room B3</span>
-                                        </div>
+
                                     </td>
                                     <td>
                                         <div class="primary-btn">
@@ -631,6 +628,7 @@
         <div class="primary-btn text-center">
             <a href="#" class="btn btn-primary">Download Schedule</a>
         </div>
+        <br />
     </div>
     <!-- /col end-->
 </div>

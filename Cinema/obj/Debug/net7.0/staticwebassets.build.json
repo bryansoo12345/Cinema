@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "YoW2VHx6hjw4fS47p+pQaMOYec6fXFzXosCyQTs+R8Q=",
+  "Hash": "3anEKsmvvsdhNSxPbXTjrr1dKSa+JqpPTqP0lLkMrE4=",
   "Source": "Cinema",
   "BasePath": "_content/Cinema",
   "Mode": "Default",
@@ -153,12 +153,12 @@
       "OriginalItemSpec": "wwwroot\\css\\assets\\img\\cinemabg.jpg"
     },
     {
-      "Identity": "C:\\MVC\\TEST123\\BS1\\Cinema\\Cinema\\wwwroot\\css\\assets\\img\\cinema-logo.png",
+      "Identity": "C:\\MVC\\TEST123\\BS1\\Cinema\\Cinema\\wwwroot\\css\\assets\\img\\cinema-logo-removebg.png",
       "SourceId": "Cinema",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\MVC\\TEST123\\BS1\\Cinema\\Cinema\\wwwroot\\",
       "BasePath": "_content/Cinema",
-      "RelativePath": "css/assets/img/cinema-logo.png",
+      "RelativePath": "css/assets/img/cinema-logo-removebg.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -167,7 +167,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\css\\assets\\img\\cinema-logo.png"
+      "OriginalItemSpec": "wwwroot\\css\\assets\\img\\cinema-logo-removebg.png"
     },
     {
       "Identity": "C:\\MVC\\TEST123\\BS1\\Cinema\\Cinema\\wwwroot\\css\\assets\\img\\cinema-room-bg.jpg",
@@ -185,6 +185,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\assets\\img\\cinema-room-bg.jpg"
+    },
+    {
+      "Identity": "C:\\MVC\\TEST123\\BS1\\Cinema\\Cinema\\wwwroot\\css\\assets\\img\\EmberIcon-S.png",
+      "SourceId": "Cinema",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\MVC\\TEST123\\BS1\\Cinema\\Cinema\\wwwroot\\",
+      "BasePath": "_content/Cinema",
+      "RelativePath": "css/assets/img/EmberIcon-S.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\assets\\img\\EmberIcon-S.png"
     },
     {
       "Identity": "C:\\MVC\\TEST123\\BS1\\Cinema\\Cinema\\wwwroot\\css\\assets\\img\\favicon.png",
@@ -2293,6 +2310,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\AdminPanel\\jquery.min.map"
+    },
+    {
+      "Identity": "C:\\MVC\\TEST123\\BS1\\Cinema\\Cinema\\wwwroot\\js\\AdminPanel\\ManageMovieHall.js",
+      "SourceId": "Cinema",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\MVC\\TEST123\\BS1\\Cinema\\Cinema\\wwwroot\\",
+      "BasePath": "_content/Cinema",
+      "RelativePath": "js/AdminPanel/ManageMovieHall.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\AdminPanel\\ManageMovieHall.js"
+    },
+    {
+      "Identity": "C:\\MVC\\TEST123\\BS1\\Cinema\\Cinema\\wwwroot\\js\\AdminPanel\\ManageMovieHallModel.js",
+      "SourceId": "Cinema",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\MVC\\TEST123\\BS1\\Cinema\\Cinema\\wwwroot\\",
+      "BasePath": "_content/Cinema",
+      "RelativePath": "js/AdminPanel/ManageMovieHallModel.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\AdminPanel\\ManageMovieHallModel.js"
     },
     {
       "Identity": "C:\\MVC\\TEST123\\BS1\\Cinema\\Cinema\\wwwroot\\js\\ModalPopup.js",

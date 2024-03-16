@@ -29,6 +29,10 @@
       "PackagePath": "staticwebassets\\css\\assets\\css\\style.css"
     },
     {
+      "Id": "C:\\MVC\\TEST123\\BS1\\Cinema\\Cinema\\wwwroot\\css\\assets\\img\\EmberIcon-S.png",
+      "PackagePath": "staticwebassets\\css\\assets\\img\\EmberIcon-S.png"
+    },
+    {
       "Id": "C:\\MVC\\TEST123\\BS1\\Cinema\\Cinema\\wwwroot\\css\\assets\\img\\LoginCinema.jpg",
       "PackagePath": "staticwebassets\\css\\assets\\img\\LoginCinema.jpg"
     },
@@ -49,8 +53,8 @@
       "PackagePath": "staticwebassets\\css\\assets\\img\\apple-touch-icon.png"
     },
     {
-      "Id": "C:\\MVC\\TEST123\\BS1\\Cinema\\Cinema\\wwwroot\\css\\assets\\img\\cinema-logo.png",
-      "PackagePath": "staticwebassets\\css\\assets\\img\\cinema-logo.png"
+      "Id": "C:\\MVC\\TEST123\\BS1\\Cinema\\Cinema\\wwwroot\\css\\assets\\img\\cinema-logo-removebg.png",
+      "PackagePath": "staticwebassets\\css\\assets\\img\\cinema-logo-removebg.png"
     },
     {
       "Id": "C:\\MVC\\TEST123\\BS1\\Cinema\\Cinema\\wwwroot\\css\\assets\\img\\cinema-room-bg.jpg",
@@ -515,6 +519,14 @@
     {
       "Id": "C:\\MVC\\TEST123\\BS1\\Cinema\\Cinema\\wwwroot\\js\\AdminPanel\\AdminPanel.js",
       "PackagePath": "staticwebassets\\js\\AdminPanel\\AdminPanel.js"
+    },
+    {
+      "Id": "C:\\MVC\\TEST123\\BS1\\Cinema\\Cinema\\wwwroot\\js\\AdminPanel\\ManageMovieHall.js",
+      "PackagePath": "staticwebassets\\js\\AdminPanel\\ManageMovieHall.js"
+    },
+    {
+      "Id": "C:\\MVC\\TEST123\\BS1\\Cinema\\Cinema\\wwwroot\\js\\AdminPanel\\ManageMovieHallModel.js",
+      "PackagePath": "staticwebassets\\js\\AdminPanel\\ManageMovieHallModel.js"
     },
     {
       "Id": "C:\\MVC\\TEST123\\BS1\\Cinema\\Cinema\\wwwroot\\js\\AdminPanel\\bootstrap.bundle.min.js",

@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Cinema.Models;
 using static Cinema.Models.MovieHallSeats;
@@ -7,6 +8,10 @@ namespace Cinema.Models
 {
     public class MovieHall : Hall
     {
+        [NotMapped]
+        [DisplayName("Hall Code")]
+        public string SelHallCode { get; set; }
+
         public int NumberOfRows { get; set; }
 
         public int NumberOfSeats { get; set; }

@@ -10,12 +10,13 @@ namespace Cinema.Models
 
         [Required(ErrorMessage = "Please enter the mall's name.")]
 
-        public string MallName { get; set; }
+        public string MallCode { get; set; }
+
+        public string? MallName { get; set; }
 
         [NotMapped]
-        public string MovieName { get; set; }
+        public string? MovieName { get; set; } //maybe need to remove soon
 
-        public string MovieShowTimeCode { get; set; }
 
         [Required]
         public string HallCode { get; set; }

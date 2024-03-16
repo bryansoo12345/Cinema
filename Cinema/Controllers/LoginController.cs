@@ -4,6 +4,8 @@ using Cinema.Models;
 using Cinema.Models.Utilities;
 using Microsoft.EntityFrameworkCore;
 using System.Text.RegularExpressions;
+using Microsoft.AspNetCore.Identity;
+using static Cinema.Models.Account;
 
 namespace Cinema.Controllers
 {
@@ -27,18 +29,23 @@ namespace Cinema.Controllers
 
             try
             {
-                var user = _db.Account.FirstOrDefault(x => x.Email == LoginAttempt.Email);
+                var user = _db.Account.FirstOrDefault(x => x.UserName == LoginAttempt.UserName);
 
-                // Check if a user with the provided email exists and if the password matches
-                if (user != null && VerifyPassword(user.Password, LoginAttempt.Password))
+                if (user != null && Security.VerifyPassword(user.Password, LoginAttempt.Password))
                 {
-                    // Authentication successful
-                    LoginInfo.RoleType = user.AccountType;
+                    LoginInfo.SetLoginInfo(user.AccountType, user.UserName, user.UserToken);
+
+                    //Check if its BranchManager
+                    if(!string.IsNullOrEmpty(LoginInfo.RoleType) && LoginInfo.RoleType == AccountTypeSelections.BranchManager.ToString())
+                    {
+                        string branchToken = _db.BranchManager.Where(x=>x.UserToken==LoginInfo.UserToken).Select(y=>y.BranchCode).FirstOrDefault();
+                        LoginInfo.SetBranchManager(branchToken);
+                    }
+
                     return RedirectToAction("Index", "Home");
                 }
                 else
                 {
-                    //Wrong Password
                     ModelState.AddModelError(string.Empty, "Invalid email or password.");
                     throw new Exception("Wrong Password");
                 }
@@ -49,12 +56,6 @@ namespace Cinema.Controllers
             }
 
         }
-        private bool VerifyPassword(string hashedPassword, string enteredPassword)
-        {
-            // Implement your password verification logic here
-            // For example, you might use hashing and salting techniques
-            // Here's a simple example assuming plain text passwords
-            return hashedPassword == enteredPassword;
-        }
+
     }
 }

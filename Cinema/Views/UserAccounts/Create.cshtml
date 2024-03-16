@@ -1,55 +1,69 @@
-﻿@model Account
+﻿@using Cinema.Models.Utilities;
+@model Account
 @{
     ViewData["Title"] = "Index";
 }
 
 
 
-<form method="post">
-    <div class="border p-3 mt-4">
-        <div class="row-pb-2">
-            <h2 class="text-primary">Create User Account</h2>
-            </hr>
-        </div>
-        <div class="modal-body">
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form method="post">
+                <div class="border p-3 mt-4">
+                    <div class="row-pb-2">
+                        <h2 class="text-primary">Create User Account</h2>
+                        <hr>
+                    </div>
+                    <div class="modal-body">
 
-            <div class="mb-3">
-                <label asp-for="UserName"></label>
-                <input asp-for="UserName" class="form-control" />
-                <span asp-validation-for="UserName" class="text-danger"></span>
-            </div>
-            <div class="mb-3">
-                <label asp-for="Password"></label>
-                <input asp-for="Password" class="form-control" />
-                <span asp-validation-for="Password" class="text-danger"></span>
-            </div>
-            <div class="mb-3">
-                <label asp-for="Name"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
-            </div>
-            <div class="mb-3">
-                <label asp-for="Email"></label>
-                <input asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
-            </div>
-            <div class ="mb-3">
-                <label asp-for="AccountType"></label>
-                <select asp-for="AccountType" class="form-control">
-                    @foreach (var genre in Enum.GetValues(typeof(Account.AccountTypeSelections)))
-                    {
-                        <option value="@genre">@genre</option>
-                    }
-                </select>
-                <span asp-validation-for="AccountType" class="text-danger"></span>
-            </div>
-        </div>
-        <div class="modal-footer">
-            <button type="submit" class="btn btn-primary">Create</button>&nbsp;
-            <a asp-controller="UserAccounts" asp-action="Index" type="button" class="btn btn-secondary" data-save="modal">Back</a>
+                        <div class="mb-3">
+                            <label asp-for="UserName"></label>
+                            <input asp-for="UserName" class="form-control" />
+                            <span asp-validation-for="UserName" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="Password"></label>
+                            <input asp-for="Password" class="form-control" type="password" />
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="Name"></label>
+                            <input asp-for="Name" class="form-control" />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="Email"></label>
+                            <input asp-for="Email" class="form-control" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="AccountType"></label>
+                            <select asp-for="AccountType" class="form-control" id="accountTypeSelect">
+                                @foreach (var type in Enum.GetValues(typeof(Account.AccountTypeSelections)))
+                                {
+                                    var description = ((Enum)type).GetDescription();
+                                    <option value="@type">@description</option>
+                                }
+                            </select>
+                            <span asp-validation-for="AccountType" class="text-danger"></span>
+                        </div>
+                        <!-- Initially hidden textbox -->
+                        <div class="mb-3 d-none" id="branchManagerTextbox">
+                            <label asp-for="BranchCode">Manager Branch</label>
+                            <select asp-for="BranchCode" class="form-control" id="ManagerBranch" name="BranchCode"></select>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Create</button>&nbsp;
+                        <a asp-controller="UserAccounts" asp-action="Index" type="button" class="btn btn-secondary" data-save="modal">Back</a>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
-</form>
+</div>
 
 
 

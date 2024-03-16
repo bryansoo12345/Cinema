@@ -16,9 +16,9 @@
                         <br />
                         <h2>Show Times</h2>
                     </div>
-                    <p>
+                    <h6>
                         Address: @Model.CinemaBranch.Address
-                    </p>
+                    </h6>
                     @if (Model.CinemaBranch.PhotoFile != null && Model.CinemaBranch.PhotoFile.Length > 0)
                     {
                         var imageBase64 = Convert.ToBase64String(Model.CinemaBranch.PhotoFile);
@@ -32,5 +32,6 @@
         <div id="movieList">
             <partial name="_BuyTicketList.cshtml" />
         </div>
+        <br />
     </div>
 </div>

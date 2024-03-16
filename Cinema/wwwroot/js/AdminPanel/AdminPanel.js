@@ -10,4 +10,6 @@
             $('.container-fluid').html(data); // Replace the container content with the loaded partial view
         });
     });
+
+
 });

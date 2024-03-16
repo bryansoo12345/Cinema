@@ -17,18 +17,13 @@ namespace Cinema.Models
         public string MovieName { get; set; }
 
         [Required]
-        public string HallCode { get; set; }
-
-        [Required]
         public DateTime ShowDate { get; set; }
-        [Required]
+        [Required] //movie show time code is for 
         public string MovieShowTimeCode { get; set; } //build with format MallCode+MovieCode+Date+Count EXAMPLE: OUOUMV00012024172001. Count is 3 Digit
 
         public List<MovieShowTime> MovieShowTimes { get; set; }
         [NotMapped]
         public Movie Movie { get; set; }
-
-
 
     }
 }

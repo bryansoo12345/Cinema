@@ -75,3 +75,49 @@ $(function () {
         });
     });
 
+    //Manage User Account
+    document.addEventListener("DOMContentLoaded", function () {
+        var accountTypeSelect = document.getElementById("accountTypeSelect");
+        var branchManagerTextbox = document.getElementById("branchManagerTextbox");
+        var managerBranchSelect = document.getElementById("ManagerBranch");
+
+        function toggleBranchManagerTextbox() {
+            if (accountTypeSelect.value === "BranchManager") {
+                branchManagerTextbox.classList.remove("d-none");
+
+                // Call the API to get branch data
+                fetch('/UserAccounts/GetBranch') // Adjust the URL to your actual API endpoint
+                    .then(response => response.json())
+                    .then(data => {
+                        // Assuming 'data' is an array of branches
+                        // Clear existing options first
+                        managerBranchSelect.innerHTML = '';
+
+                        // Optionally add a default or placeholder option
+                        var defaultOption = document.createElement('option');
+                        defaultOption.text = 'Select a Branch';
+                        defaultOption.value = '';
+                        managerBranchSelect.add(defaultOption);
+
+                        // Populate select with new options
+                        data.forEach(branch => {
+                            var option = document.createElement('option');
+                            option.text = `${branch.mallCode} - ${branch.mallName}`; // Display text
+                            option.value = branch.mallCode; // Value to be submitted, which should match the BranchCode
+                            managerBranchSelect.add(option);
+                        });
+                    })
+                    .catch(error => console.error('Error fetching branch data:', error));
+
+            } else {
+                branchManagerTextbox.classList.add("d-none");
+            }
+        }
+
+        // Event listener for dropdown changes
+        accountTypeSelect.addEventListener("change", toggleBranchManagerTextbox);
+
+        // Optionally, call the function immediately in case the form is being reloaded
+        // with a previously selected value (useful for edit forms or if preserving state)
+        toggleBranchManagerTextbox();
+    });

@@ -1,7 +1,10 @@
 ﻿using Cinema.Data;
+using Cinema.Models.UserAccounts;
 using Cinema.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Cinema.Models.AdminPanel;
+using Cinema.Models.Utilities;
 
 namespace Cinema.Controllers
 {
@@ -14,10 +17,12 @@ namespace Cinema.Controllers
             _db = db;
         }
 
-
         public IActionResult AdminPanel()
         {
-            return View();
+            AdminPanel AdminPanelViewModel = new AdminPanel();
+            AdminPanelViewModel.Movie = _db.Movie.Take(3).ToList();
+
+            return View(AdminPanelViewModel);
         }
 
         //Dynamic Partial View
@@ -33,7 +38,6 @@ namespace Cinema.Controllers
 
                 if (entityType == null)
                 {
-                    //only add _ for shared modules, for example like _AdminPanelDashboard
                     return PartialView($"_{partial}");
                 }
                 else
@@ -60,5 +64,36 @@ namespace Cinema.Controllers
             }
 
         }
+
+        #region Manage Cinema Hall -> Lead into Manage Movie Show filter by Date order by ShowTime 
+
+        [HttpGet]
+        public IActionResult AddMovieHall()
+        {
+            MovieHall MovieHall = new MovieHall();
+            string methodName = nameof(AddMovieHall);
+            ViewBag.MethodName = methodName;
+            ViewData["Title"] = "Add Movie Hall";
+            return PartialView("_ManageMovieHallPartial", MovieHall);
+        }
+
+        [HttpPost]
+        //[ValidateAntiForgeryToken]
+        public IActionResult AddMovieHall(MovieHall movieHall)
+        {
+            ModelState.Remove("MallCode");
+            movieHall.MallCode = LoginInfo.BranchCode;
+            movieHall.HallCode = $"{LoginInfo.BranchCode}{Utility.GenerateString(3)}{movieHall.SelHallCode}";
+            movieHall.MallName = _db.CinemaBranch.Where(x => x.MallCode==LoginInfo.BranchCode).Select(x => x.MallName).FirstOrDefault();
+            _db.MovieHall.Add(movieHall);
+            _db.SaveChanges();
+            return Json(new { success = true, message = "Movie hall added successfully", movieId = movieHall.Id });
+            //var errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage);
+            //return Json(new { success = false, errors });
+
+        }
+
+        #endregion
+
     }
 }

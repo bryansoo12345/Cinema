@@ -31,6 +31,7 @@ namespace Cinema.Controllers
             return View(objCinemaList);
         }
 
+
         [HttpGet]
         public IActionResult BuyTicket(int id)
         {
@@ -244,18 +245,18 @@ namespace Cinema.Controllers
             return Json(new { success = true, message = "Movie show created successfully"});
         }
 
-        [HttpGet]
-        //Good Practice: Pass simple and non sensitive data through parameters to reduce interactions with database.
-        //This method is to for admin/cinema users to set show time. the ui will allow admin to select movie, select hall, then initliaze the cinema hall for showtime.
-        public IActionResult SetShowTime(string ShowCode, string HallCode, string MovieName)
-        {
-            // Use ShowCode to get MovieHall From DB. 
-            MovieHall? MovieHall = _db.MovieHall.Where(x => x.MovieShowTimeCode == ShowCode).FirstOrDefault();
-            MovieHall.MovieName = MovieName;
-            MovieHall.HallCode = HallCode;
-            MovieHall.Seats = MovieHall.PopulateSeats(MovieHall.NumberOfRows, MovieHall.NumberOfSeats);
-            return View(MovieHall);
-        }
+        //[HttpGet]
+        ////Good Practice: Pass simple and non sensitive data through parameters to reduce interactions with database.
+        ////This method is to for admin/cinema users to set show time. the ui will allow admin to select movie, select hall, then initliaze the cinema hall for showtime.
+        //public IActionResult SetShowTime(string ShowCode, string HallCode, string MovieName)
+        //{
+        //    // Use ShowCode to get MovieHall From DB. 
+        //    MovieHall? MovieHall = _db.MovieHall.Where(x => x.MovieShowTimeCode == ShowCode).FirstOrDefault();
+        //    MovieHall.MovieName = MovieName;
+        //    MovieHall.HallCode = HallCode;
+        //    MovieHall.Seats = MovieHall.PopulateSeats(MovieHall.NumberOfRows, MovieHall.NumberOfSeats);
+        //    return View(MovieHall);
+        //}
 
         #endregion
 
