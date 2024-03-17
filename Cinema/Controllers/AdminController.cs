@@ -25,14 +25,67 @@ namespace Cinema.Controllers
             return View(AdminPanelViewModel);
         }
 
+        public IActionResult MovieHall()
+        {
+            IEnumerable<MovieHall> MovieHall = _db.MovieHall.Where(x=>x.MallCode==LoginInfo.BranchCode).ToList();
+
+            return View(MovieHall);
+        }
+        [HttpGet]
+        public IActionResult AddMovieHall()
+        {
+            MovieHall MovieHall = new MovieHall();
+            string methodName = nameof(AddMovieHall);
+            ViewBag.MethodName = methodName;
+            ViewData["Title"] = "Add Movie Hall";
+            return PartialView("_ManageMovieHallPartial", MovieHall);
+        }
+        [HttpPost]
+        //[ValidateAntiForgeryToken]
+        public IActionResult AddMovieHall(MovieHall movieHall)
+        {
+            ModelState.Remove("MallCode");
+            movieHall.MallCode = LoginInfo.BranchCode;
+            movieHall.HallCode = $"{LoginInfo.BranchCode}{Utility.GenerateString(3)}{movieHall.SelHallCode}";
+            movieHall.MallName = _db.CinemaBranch.Where(x => x.MallCode == LoginInfo.BranchCode).Select(x => x.MallName).FirstOrDefault();
+            _db.MovieHall.Add(movieHall);
+            _db.SaveChanges();
+            return Json(new { success = true, message = "Movie hall added successfully", movieId = movieHall.Id });
+            //var errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage);
+            //return Json(new { success = false, errors });
+
+        }
+
+
+        #region Manage Cinema Hall -> Lead into Manage Movie Show filter by Date order by ShowTime 
+
+        [HttpGet]
+        public IActionResult ManageHall(string HallCode)
+        {
+            var movieHall = _db.MovieHall.FirstOrDefault(x => x.HallCode == HallCode);
+
+            if (movieHall == null)
+            {
+                return NotFound();
+            }
+            //MovieHall MovieHall = new MovieHall();
+            string methodName = nameof(ManageHall);
+            ViewBag.MethodName = methodName;
+            ViewData["Title"] = "Add Movie Hall";
+            return View(movieHall);
+        }
+
+        #endregion
+
+        #region Old Design - Manual Partial View
+
         //Dynamic Partial View
         [HttpGet]
         public IActionResult LoadPartial(string partial)
         {
             try
             {
-                // Get the fully qualified type name including the namespace
-                string? typeName = System.Reflection.Assembly.GetExecutingAssembly().GetName().Name + ".Models." + partial; 
+                string? typeName = System.Reflection.Assembly.GetExecutingAssembly().GetName().Name + ".Models." + partial;
 
                 Type? entityType = Type.GetType(typeName);
 
@@ -42,18 +95,18 @@ namespace Cinema.Controllers
                 }
                 else
                 {
-                    // Get the property name of the entity set in the DbContext
+                    //Dynamic Rendering
                     string entitySetName = _db.Model.FindEntityType(entityType).GetTableName();
 
-                    // Get the DbSet property dynamically using reflection
                     var dbSetProperty = _db.GetType().GetProperty(entitySetName);
 
-                    // Get the value of the DbSet property
                     var dbSet = dbSetProperty.GetValue(_db);
 
                     IEnumerable<object> entityList = (IEnumerable<object>)dbSet;
 
-                    // Pass entityList to the PartialView
+                    //Process
+                    //IEnumerable<object> processedEntities = ProcessEntities(entityList, entityType);
+
                     return PartialView($"{partial}", entityList);
                 }
 
@@ -65,32 +118,21 @@ namespace Cinema.Controllers
 
         }
 
-        #region Manage Cinema Hall -> Lead into Manage Movie Show filter by Date order by ShowTime 
-
-        [HttpGet]
-        public IActionResult AddMovieHall()
+        private IEnumerable<object> ProcessEntities(IEnumerable<object> entities, Type entityType)
         {
-            MovieHall MovieHall = new MovieHall();
-            string methodName = nameof(AddMovieHall);
-            ViewBag.MethodName = methodName;
-            ViewData["Title"] = "Add Movie Hall";
-            return PartialView("_ManageMovieHallPartial", MovieHall);
-        }
+            return entityType switch
+            {
+                var type when type == typeof(MovieHall) => entities.Cast<MovieHall>()
+                    .OrderBy(x => x.ExternalCode.Substring(0, 1))
+                    .ThenBy(x => int.Parse(x.ExternalCode.Substring(1)))
+                    .Cast<object>(),
 
-        [HttpPost]
-        //[ValidateAntiForgeryToken]
-        public IActionResult AddMovieHall(MovieHall movieHall)
-        {
-            ModelState.Remove("MallCode");
-            movieHall.MallCode = LoginInfo.BranchCode;
-            movieHall.HallCode = $"{LoginInfo.BranchCode}{Utility.GenerateString(3)}{movieHall.SelHallCode}";
-            movieHall.MallName = _db.CinemaBranch.Where(x => x.MallCode==LoginInfo.BranchCode).Select(x => x.MallName).FirstOrDefault();
-            _db.MovieHall.Add(movieHall);
-            _db.SaveChanges();
-            return Json(new { success = true, message = "Movie hall added successfully", movieId = movieHall.Id });
-            //var errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage);
-            //return Json(new { success = false, errors });
+                var type when type == typeof(Movie) => entities.Cast<Movie>()
+                    .OrderByDescending(x => x.MovieCode)
+                    .Cast<object>(),
 
+                _ => entities
+            };
         }
 
         #endregion

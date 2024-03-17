@@ -1,0 +1,24 @@
+﻿.cinema-seating {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.seat-row {
+    display: flex;
+    margin-bottom: 5px;
+}
+
+.seat {
+    width: 30px;
+    height: 30px;
+    margin-right: 5px;
+    background-color: #ddd;
+    border: none;
+    border-radius: 5px;
+}
+
+    .seat.selected {
+        background-color: #f90;
+    }

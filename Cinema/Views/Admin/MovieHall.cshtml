@@ -2,7 +2,10 @@
 @{
     ViewData["Title"] = "MovieHall";
 }
-
+@*@{
+    Layout = "~/Views/Admin/_LayoutAdmin.cshtml";
+}
+*@
 <br />
 <div class="table-container">
     <div class="row pt-4 justify-content-between align-items-center">
@@ -29,7 +32,7 @@
         </div>
         <div class="col-md-6 text-right">
             <a asp-controller="CinemaBranch" asp-action="CreateCinemaBranch" class="btn btn-primary">Advanced Search</a>
-            <button type="button" class="btn btn-primary" data-toggle="ajax-modal" data-target="#addMovie" data-url="@Url.Action("AddMovieHall")">Add New Hall</button>
+            <button type="button" id="addNewHallButton" class="btn btn-primary" data-toggle="ajax-modal" data-target="#addMovie" data-url="@Url.Action("AddMovieHall")">Add New Hall</button>
         </div>
 
     </div>
@@ -37,31 +40,19 @@
     <table class="table table-bordered table-striped" style="width:100%">
         <thead>
             <tr>
-                <th>Cover Photo</th> 
-                <th>Movie Name</th>
-                <th>Show Code</th>
-                <th>ShowDate</th>
-                
+                <th>HallCode</th>
                 <th style="text-align: center;">Action</th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var obj in Model)
+            @foreach (var obj in Model.OrderBy(x=>x.ExternalCode))
             {
                 <tr>
                     <td width="20%">
-                        @*                        @if (obj.PhotoFile != null && obj.PhotoFile.Length > 0)
-                    {
-                    var imageBase64 = Convert.ToBase64String(obj.PhotoFile);
-                    <img src="data:image;base64,@imageBase64" alt="Cover Photo" class="img-thumbnail" />
-                    }*@
+                        @obj.ExternalCode
                     </td>
-                    <td width="25%">@obj.MovieName</td>
-                    @*<td width="20%">@obj.MovieShowTimeCode</td>*@
-                    @*<td width="15%">@obj.ShowDate</td>*@
-
                     <td width="20%" style="text-align: center;">
-                        <button type="button" class="btn btn-outline-info" data-toggle="ajax-modal" data-target="#addMovie" data-url="@Url.Action("ManageHall")" data-id="@obj.Id">Manage Hall</button>&nbsp;
+                        <a class="btn btn-outline-info" asp-controller="Admin" asp-action="ManageHall" asp-route-HallCode="@obj.HallCode" class="btn btn-primary" asp-id>Manage Hall</a>
                         <button type="button" class="btn btn-outline-warning delete-movie-btn" data-id="@obj.Id" data-url="@Url.Action("DeleteHall")">
                             Delete
                         </button>

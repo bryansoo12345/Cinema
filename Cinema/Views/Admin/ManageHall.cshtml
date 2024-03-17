@@ -1,0 +1,29 @@
+﻿@model MovieHall
+<link rel="stylesheet" href="~/css/AdminPanel/ManageHall.css" />
+<div class="row align-items-center" style="margin-bottom:5px">
+    <div class="col-md-6">
+        <h2 class="text-primary">Manage Branch Movie Hall</h2>
+    </div>
+    <div class="col-md-6 text-right">
+        <a asp-controller="CinemaBranch" asp-action="CreateCinemaBranch" class="btn btn-primary">Advanced Search</a>
+        <button type="button" id="addNewHallButton" class="btn btn-primary" data-toggle="ajax-modal" data-target="#addMovie" data-url="@Url.Action("AddMovieHall")">Add New Hall</button>
+    </div>
+
+</div>
+<br />
+<div class="cinema-seating">
+    @for (int row = 0; row < Model.NumberOfRows; row++)
+    {
+        <div class="seat-row">
+            @for (int seatNum = 1; seatNum <= Model.NumberOfSeats; seatNum++)
+            {
+                    char rowLetter = (char)('A' + row);
+                    string seatLabel = $"{rowLetter}{seatNum}";
+                
+                <button class="seat" data-row="@row" data-seat="@seatNum" id="@seatLabel" onclick="selectSeat(this)">
+                    @seatLabel
+                </button>
+            }
+        </div>
+    }
+</div>

@@ -12,10 +12,5 @@ namespace Cinema.Models
         [NotMapped]
         public List<MovieShowTime> MovieShowTimes { get; set; }
 
-        //public BranchHall(string pMallCode, DateTime pDate)
-        //{
-        //    MallCode = pMallCode;
-        //    Date = pDate;
-        //}
     }
 }

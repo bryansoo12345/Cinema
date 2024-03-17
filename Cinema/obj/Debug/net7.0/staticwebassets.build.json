@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "3anEKsmvvsdhNSxPbXTjrr1dKSa+JqpPTqP0lLkMrE4=",
+  "Hash": "s9UR9Q7QRzeLFtXyPypL0H/buKvoh7YJLK3jyFAL/k8=",
   "Source": "Cinema",
   "BasePath": "_content/Cinema",
   "Mode": "Default",
@@ -66,6 +66,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\AdminPanel\\all.min.css"
+    },
+    {
+      "Identity": "C:\\MVC\\TEST123\\BS1\\Cinema\\Cinema\\wwwroot\\css\\AdminPanel\\ManageHall.css",
+      "SourceId": "Cinema",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\MVC\\TEST123\\BS1\\Cinema\\Cinema\\wwwroot\\",
+      "BasePath": "_content/Cinema",
+      "RelativePath": "css/AdminPanel/ManageHall.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\AdminPanel\\ManageHall.css"
     },
     {
       "Identity": "C:\\MVC\\TEST123\\BS1\\Cinema\\Cinema\\wwwroot\\css\\AdminPanel\\sb-admin-2.min.css",

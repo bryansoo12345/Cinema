@@ -24,6 +24,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQ2luZW1hQnJhbmNoLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/MVC/TEST123/BS1/Cinema/Cinema/Views/Admin/ManageHall.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cTWFuYWdlSGFsbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/MVC/TEST123/BS1/Cinema/Cinema/Views/Admin/MovieHall.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cTW92aWVIYWxsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -44,8 +48,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cX0FkbWluUGFuZWxUb3BiYXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/MVC/TEST123/BS1/Cinema/Cinema/Views/Admin/_LayoutAdmin.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cX0xheW91dEFkbWluLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/MVC/TEST123/BS1/Cinema/Cinema/Views/Admin/_ManageMovieHallPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cX01hbmFnZU1vdmllSGFsbFBhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/MVC/TEST123/BS1/Cinema/Cinema/Views/Admin/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/MVC/TEST123/BS1/Cinema/Cinema/Views/CinemaBranch/CinemaBranch.cshtml]

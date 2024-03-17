@@ -14,10 +14,6 @@ namespace Cinema.Models
 
         public string? MallName { get; set; }
 
-        [NotMapped]
-        public string? MovieName { get; set; } //maybe need to remove soon
-
-
         [Required]
         public string HallCode { get; set; }
 

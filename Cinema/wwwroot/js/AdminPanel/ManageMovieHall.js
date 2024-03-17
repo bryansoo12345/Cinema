@@ -2,14 +2,10 @@
     var PlaceHolderElement = $('#PlaceHolderHere');
     //edit
     $(document).ready(function () {
-        // Event delegation for edit/save buttons
-        $(document).on('click', 'button[data-toggle="ajax-modal"]', function () {
-            //Retrieve id
+        $(document).on('click', '#addNewHallButton', function () {
             var button = $(this);
-            var id = button.data('id');
-
-            var url = $(this).data('url');
-            $.get(url, { id: id }).done(function (data) {
+            var url = button.data('url');
+            $.get(url).done(function (data) {
                 $('#PlaceHolderHere').html(data);
                 $('#PlaceHolderHere').find('.modal').modal('show');
                 attachSaveChangesListener();
@@ -70,4 +66,11 @@
             }
         });
     });
+
+    //Manage Movie Hall
+    $(document).on('click', '.seat', function () {
+        $(this).toggleClass('selected');
+        // Additional logic for handling the selection
+    });
+
 })

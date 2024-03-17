@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\Cinema.bundle.scp.css"
     },
     {
+      "Id": "C:\\MVC\\TEST123\\BS1\\Cinema\\Cinema\\wwwroot\\css\\AdminPanel\\ManageHall.css",
+      "PackagePath": "staticwebassets\\css\\AdminPanel\\ManageHall.css"
+    },
+    {
       "Id": "C:\\MVC\\TEST123\\BS1\\Cinema\\Cinema\\wwwroot\\css\\AdminPanel\\all.min.css",
       "PackagePath": "staticwebassets\\css\\AdminPanel\\all.min.css"
     },

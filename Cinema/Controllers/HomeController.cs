@@ -20,7 +20,12 @@ namespace Cinema.Controllers
         public IActionResult Index()
         {
             IEnumerable<Movie> objMovieList = _db.Movie.Take(1).ToList();
-            string test = LoginInfo.RoleType;
+
+            //Dev
+            LoginInfo.SetLoginInfo("BranchManager", "pc1", "8ODW02");
+            //Branch Manager
+            LoginInfo.SetBranchManager("PC");
+
             return View(objMovieList);
         }
 

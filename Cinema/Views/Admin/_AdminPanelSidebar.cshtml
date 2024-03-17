@@ -35,7 +35,8 @@
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Manage Cinema</h6>
                     <a class="nav-link collapse-item" data-partial="CinemaBranch">Cinema Branch</a>
-                    <a class="nav-link collapse-item" data-partial="MovieHall">Movie Showings</a>
+                    @*<a class="nav-link collapse-item" data-partial="MovieHall">Movie Showings</a>*@
+                    <a class="nav-link collapse-item" asp-controller="Admin" asp-action="MovieHall">Movie Showings</a>
                     <a class="nav-link collapse-item" data-partial="AdminPanelDashboard">Dashboard</a>
                 </div>
             </div>

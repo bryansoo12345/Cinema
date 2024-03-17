@@ -2,12 +2,29 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Cinema.Models;
+using Cinema.Models.AdminPanel;
 using static Cinema.Models.MovieHallSeats;
 
 namespace Cinema.Models
 {
     public class MovieHall : Hall
     {
+        [NotMapped]
+        [DisplayName("Hall Code")]
+        public string ExternalCode
+        {
+            get
+            {
+                if (!string.IsNullOrEmpty(HallCode) && HallCode.Length >= 2)
+                {
+                    return HallCode.Substring(HallCode.Length - 2);
+                }
+                else
+                {
+                    return string.Empty;
+                }
+            }
+        }
         [NotMapped]
         [DisplayName("Hall Code")]
         public string SelHallCode { get; set; }
@@ -21,7 +38,7 @@ namespace Cinema.Models
 
         public void AddMovie(Movie movie)
         {
-
+                
         }
 
         public void RemoveMovie(Movie movie)

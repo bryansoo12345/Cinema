@@ -40,9 +40,77 @@
     * Author: BootstrapMade.com
     * License: https://bootstrapmade.com/license/
     ======================================================== -->
+
+    <!--SideBAR-->
+@*    <link href="~/css/assets/css/sidebar.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/assets/vendor/bootstrap/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro:400,600&display=swap" rel="stylesheet">*@
+
+
+
 </head>
 <body>
-    <header>
+
+@*        <aside class="sidebar">
+            <div class="toggle">
+                <a href="#" class="burger js-menu-toggle" data-toggle="collapse" data-target="#main-navbar">
+                    <span></span>
+                </a>
+            </div>
+            <div class="side-inner">
+
+                <div class="profile">
+                    <img src="images/person_4.jpg" alt="Image" class="img-fluid">
+                    <h3 class="name">Craig David</h3>
+                    <span class="country">Web Designer</span>
+                </div>
+
+
+                <div class="nav-menu">
+                    <ul>
+                        <li class="accordion">
+                            <a href="#" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne" class="collapsible">
+                                <span class="icon-home mr-3"></span>Feed
+                            </a>
+                            <div id="collapseOne" class="collapse" aria-labelledby="headingOne">
+                                <div>
+                                    <ul>
+                                        <li><a href="#">News</a></li>
+                                        <li><a href="#">Sport</a></li>
+                                        <li><a href="#">Health</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="accordion">
+                            <a href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" class="collapsible">
+                                <span class="icon-search2 mr-3"></span>Explore
+                            </a>
+
+                            <div id="collapseTwo" class="collapse" aria-labelledby="headingOne">
+                                <div>
+                                    <ul>
+                                        <li><a href="#">Interior</a></li>
+                                        <li><a href="#">Food</a></li>
+                                        <li><a href="#">Travel</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </li>
+                        <li><a href="#"><span class="icon-notifications mr-3"></span>Notifications</a></li>
+                        <li><a href="#"><span class="icon-location-arrow mr-3"></span>Direct</a></li>
+                        <li><a href="#"><span class="icon-pie-chart mr-3"></span>Stats</a></li>
+                        <li><a href="#"><span class="icon-sign-out mr-3"></span>Sign out</a></li>
+                    </ul>
+                </div>
+            </div>
+
+        </aside>*@
         <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
@@ -97,13 +165,22 @@
                 </div>
             </div>
         </nav>
-    </header>
+
     <div class="container-fluid" style="padding-left: 0; padding-right: 0;">
         <main role="main">
-            @RenderBody()
+    @RenderBody()
         </main>
     </div>
 
+@*    <main>
+        <div class="site-section">
+            <div class="container">
+                <div class="row justify-content-center">
+                    @RenderBody()
+                </div>
+            </div>
+        </div>
+    </main>*@
 
     <footer class="border-top footer" style="background-color: rgb(223, 105, 25); position: fixed; bottom: 0; width: 100%;">
         <div class="container">
