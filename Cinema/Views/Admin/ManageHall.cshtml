@@ -1,29 +1,70 @@
 ﻿@model MovieHall
 <link rel="stylesheet" href="~/css/AdminPanel/ManageHall.css" />
-<div class="row align-items-center" style="margin-bottom:5px">
-    <div class="col-md-6">
-        <h2 class="text-primary">Manage Branch Movie Hall</h2>
-    </div>
-    <div class="col-md-6 text-right">
-        <a asp-controller="CinemaBranch" asp-action="CreateCinemaBranch" class="btn btn-primary">Advanced Search</a>
-        <button type="button" id="addNewHallButton" class="btn btn-primary" data-toggle="ajax-modal" data-target="#addMovie" data-url="@Url.Action("AddMovieHall")">Add New Hall</button>
-    </div>
 
-</div>
-<br />
-<div class="cinema-seating">
-    @for (int row = 0; row < Model.NumberOfRows; row++)
-    {
-        <div class="seat-row">
-            @for (int seatNum = 1; seatNum <= Model.NumberOfSeats; seatNum++)
-            {
+
+<div class="table-container">
+    <div class="row align-items-center" style="margin-bottom:5px;margin-left:7px">
+        <div class="col-md-6">
+            <h2 class="text-primary">Manage Branch Movie Hall</h2>
+        </div>
+        <div class="col-md-6 text-right">
+            <a asp-controller="CinemaBranch" asp-action="CreateCinemaBranch" class="btn btn-primary">Advanced Search</a>
+            <button type="button" id="AddMovieShow" class="btn btn-primary" data-toggle="ajax-modal" data-target="#AddMovieShow" data-url="@Url.Action("AddMovieShow")" data-defaultdate="@DateTime.Now.AddHours(12)" data-id="@Model.Id"
+                    data-hallcode="@Model.HallCode">
+                Add Movie Show
+            </button>
+            <button type="button" id="FilterHallButton" class="btn btn-primary" data-toggle="ajax-modal" data-target="#FilterHall" data-url="@Url.Action("FilterHall")">Filter Hall</button>
+        </div>
+
+    </div>
+    <br />
+    <div id="PlaceHolderHere"></div>
+    <div class="cinema-seating">
+        @for (int row = 0; row < Model.NumberOfRows; row++)
+        {
+            <div class="seat-row">
+                @for (int seatNum = 1; seatNum <= Model.NumberOfSeats; seatNum++)
+                {
                     char rowLetter = (char)('A' + row);
                     string seatLabel = $"{rowLetter}{seatNum}";
-                
-                <button class="seat" data-row="@row" data-seat="@seatNum" id="@seatLabel" onclick="selectSeat(this)">
-                    @seatLabel
-                </button>
+
+                    <button class="seat" data-row="@row" data-seat="@seatNum" id="@seatLabel" onclick="selectSeat(this)">
+                        @seatLabel
+                    </button>
+                }
+            </div>
+        }
+    </div>
+    <br />
+    <!-- Start of table -->
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Cover Photo</th>
+                <th scope="col">Title</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var movieShow in Model.MovieShowTimes) // Assuming Model.MovieShows is your list of movie shows
+            {
+                <tr>
+                    @*<td><img src="@movieShow.CoverPhoto" alt="Cover Photo" style="width:100px;height:auto;"></td>*@
+                    <td></td>
+                    <td>
+                        <p>@movieShow.MovieName</p>
+                        <p>Start: @movieShow.StartTime.ToString("g")</p> <!-- Adjust date formatting as needed -->
+                        <p>End: @movieShow.EndTime.ToString("g")</p>
+                    </td>
+                    <td>
+                        <a href="/YourController/Edit/@movieShow.Id" class="btn btn-primary">Edit</a> <!-- Adjust the href attribute as needed -->
+                        <a href="/YourController/Delete/@movieShow.Id" class="btn btn-danger">Delete</a> <!-- Adjust the href attribute as needed -->
+                    </td>
+                </tr>
             }
-        </div>
-    }
+        </tbody>
+    </table>
 </div>
+
+
+

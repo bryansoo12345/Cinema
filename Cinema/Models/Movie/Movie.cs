@@ -21,6 +21,8 @@ namespace Cinema.Models
 
         public byte[]? PhotoFile { get; set; }
 
+        public int DurationMinutes { get; set; }
+
         #endregion
 
         public enum GenreType

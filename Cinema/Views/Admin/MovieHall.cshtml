@@ -2,29 +2,14 @@
 @{
     ViewData["Title"] = "MovieHall";
 }
+
 @*@{
     Layout = "~/Views/Admin/_LayoutAdmin.cshtml";
 }
 *@
+<link rel="stylesheet" href="~/css/AdminPanel/ManageHall.css" />
 <br />
 <div class="table-container">
-    <div class="row pt-4 justify-content-between align-items-center">
-
-        @*this one can add for Advanced Search and Manage Hall *@
-
-@*        <div class="col-md-4">
-            <h1 class="text-primary">Select the date:</h1>
-        </div>
-        <div class="col-md-8 d-flex justify-content-left">
-            <div class="mr-2">
-                <input type="date" class="form-control" id="MovieShowDate" name="MovieShowDate">
-            </div>
-            <div>
-                <a asp-controller="CinemaBranch" asp-action="CreateCinemaBranch" class="btn btn-primary">Select Date</a>
-            </div>
-        </div>*@
-  
-    </div>
     <br />
     <div class="row align-items-center" style="margin-bottom:5px">
         <div class="col-md-6">
@@ -62,14 +47,6 @@
         </tbody>
     </table>
 </div>
-<style>
-    .table-container {
-        margin-left: auto;
-        margin-right: auto;
-        max-width: 85%;
-    }
-</style>
-
 
 
                         

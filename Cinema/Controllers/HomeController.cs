@@ -22,7 +22,7 @@ namespace Cinema.Controllers
             IEnumerable<Movie> objMovieList = _db.Movie.Take(1).ToList();
 
             //Dev
-            LoginInfo.SetLoginInfo("BranchManager", "pc1", "8ODW02");
+            //LoginInfo.SetLoginInfo("BranchManager", "pc1", "8ODW02");
             //Branch Manager
             LoginInfo.SetBranchManager("PC");
 

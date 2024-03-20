@@ -9,7 +9,11 @@ namespace Cinema.Models
         [Key]
         public int Id { get; set; }
         [Required]
-        public string MallCode { get; set; } 
+        public string MallCode { get; set; }
+
+        [Required]
+        public string HallCode { get; set; }
+
         [Required]
         public string MovieCode { get; set; } // build with MallCode+MV+count . Count is 4 Digit
 

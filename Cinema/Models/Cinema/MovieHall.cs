@@ -9,6 +9,8 @@ namespace Cinema.Models
 {
     public class MovieHall : Hall
     {
+        #region View
+
         [NotMapped]
         [DisplayName("Hall Code")]
         public string ExternalCode
@@ -28,6 +30,24 @@ namespace Cinema.Models
         [NotMapped]
         [DisplayName("Hall Code")]
         public string SelHallCode { get; set; }
+
+
+        public class FilterHallModel
+        {
+            [DataType(DataType.Date)]
+            [DisplayName("By Date")]
+            public DateTime SelectedDate { get; set; }
+
+            public FilterHallModel()
+            {
+                SelectedDate = DateTime.Today;
+            }
+        }
+
+        [NotMapped]
+        public IEnumerable<MovieShowTime> MovieShowTimes { get; set; }
+
+        #endregion
 
         public int NumberOfRows { get; set; }
 

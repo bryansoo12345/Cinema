@@ -1,0 +1,53 @@
+﻿@using Cinema.Models
+@model MovieShowTime
+@{
+    string title = ViewData["Title"] as string;
+    string methodName = ViewBag.MethodName as string;
+}
+    <div class="modal fade" id="addMovie">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="addMoveLabel">@title</h5>
+                <button type="button" class="close close-modal-btn" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                <form action="@methodName" name="Movie" enctype="multipart/form-data" method="post">
+                    <div class="form-group">
+                        <label asp-for="StartTime"></label>
+                        <input asp-for="StartTime" type="datetime-local" class="form-control" />
+                        <span asp-validation-for="StartTime" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="EndTime"></label>
+                        <input asp-for="EndTime" type="datetime-local" class="form-control" />
+                        <span asp-validation-for="EndTime" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="MovieCode"></label>
+                        <select asp-for="MovieCode" class="form-control">
+                            @foreach (var movie in Model.MovieSelections)
+                            {
+                                <option value="@movie">@movie</option>
+                            }
+                        </select>
+                        <span asp-validation-for="MovieCode" class="text-danger"></span>
+                    </div>
+                    <label asp-for="DurationHours"></label>
+                    <input asp-for="DurationHours" type="number" id="durationHours" name="durationHours" min="0" step="1" placeholder="2">
+
+                    <label asp-for="DurationMinutes">Minutes:</label>
+                    <input asp-for="DurationMinutes" type="number" id="durationMinutes" name="durationMinutes" min="0" max="59" step="1" placeholder="0">
+
+                    <input asp-for="HallCode" type="hidden" value="@Model.HallCode" />
+                </form>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="close btn btn-secondary close-modal-btn" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" data-save="modal">Confirm</button>
+                </div>
+            </div>
+        </div>
+    </div>

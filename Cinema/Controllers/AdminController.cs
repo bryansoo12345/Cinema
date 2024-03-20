@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Cinema.Models.AdminPanel;
 using Cinema.Models.Utilities;
+using static Cinema.Models.MovieHall;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Cinema.Controllers
 {
@@ -68,12 +70,66 @@ namespace Cinema.Controllers
             {
                 return NotFound();
             }
+            movieHall.MovieShowTimes = _db.MovieShowTimes.Where(x=>x.HallCode == HallCode).ToList();
             //MovieHall MovieHall = new MovieHall();
             string methodName = nameof(ManageHall);
             ViewBag.MethodName = methodName;
-            ViewData["Title"] = "Add Movie Hall";
+            ViewData["Title"] = "Manage Hall";
             return View(movieHall);
         }
+
+        [HttpGet]
+        public IActionResult FilterHall()
+        {
+            FilterHallModel model = new FilterHallModel();
+            string methodName = nameof(FilterHall);
+            ViewBag.MethodName = methodName;
+            ViewData["Title"] = "Filter By";
+            return PartialView("_FilterHall", model);
+        }
+
+        [HttpGet]
+        public IActionResult AddMovieShow(int id, DateTime DefaultDate, string HallCode)
+        {
+            MovieShowTime model = OnInitAddMovieShow(DefaultDate, HallCode);
+            string methodName = nameof(AddMovieShow);
+            ViewBag.MethodName = methodName;
+            ViewData["Title"] = "Add Show Time";
+            return PartialView("_ManageShowTimePartial", model);
+        }
+
+        [HttpPost]
+        public IActionResult AddMovieShow(MovieShowTime MovieShowTime)
+        {
+            if (!string.IsNullOrEmpty(MovieShowTime.MovieCode) && MovieShowTime.MovieCode.Length >= 5)
+            {
+                MovieShowTime.MovieCode = MovieShowTime.MovieCode.Substring(0, 6);
+            }
+            else
+            {
+                throw new Exception(Utility.PleaseContactAdmmin);
+            }
+            MovieShowTime.MovieShowTimeCode = MovieShowTime.BuildMovieShowTimeCode(_db);
+            MovieShowTime.MallName = _db.CinemaBranch.Where(x => x.MallCode == LoginInfo.BranchCode).Select(x => x.MallName).FirstOrDefault();
+            MovieShowTime.MovieName = _db.Movie.Where(x => x.MovieCode == MovieShowTime.MovieCode).Select(x => x.Name).FirstOrDefault();
+            _db.MovieShowTimes. Add(MovieShowTime);
+            _db.SaveChanges();
+            return Json(new { success = true, message = "Movie hall added successfully" });
+
+        }
+
+        public MovieShowTime OnInitAddMovieShow(DateTime Date, string HallCode)
+        {
+            var model = new MovieShowTime
+            {
+                StartTime = Utility.RoundToNearestFiveMinutes(Date),
+                EndTime = Utility.RoundToNearestFiveMinutes(Date.AddHours(2)),
+                MovieSelections = _db.Movie.Select(x => $"{x.MovieCode} - {x.Name}").ToList(),
+                HallCode = HallCode
+            };
+            return model;
+        }
+
 
         #endregion
 
